@@ -16,7 +16,7 @@ resource "aws_launch_configuration" "ec2_launch_conf" {
 	###########################
 	
 	
-    name = "ec2-lc-${var.ec2_launch_conf-name}"
+    name = "ec2-lc-${var.webapp_name}"
 	#(Optional) The name of the launch configuration. If you leave this blank, Terraform will auto-generate a unique name.
 	
 	

@@ -16,10 +16,6 @@ variable "ec2_instance-root_volume_size" {
   default = 10
 }
 
-variable "ec2_launch_conf-name" {
-  description = "EC2 Launch Configuration Name?:"
-}
-
 variable "webapp_name" {
     description = "Name of the Web Application for which the Infrastructure is about"
 }
