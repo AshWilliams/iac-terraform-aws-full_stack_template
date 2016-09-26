@@ -104,7 +104,7 @@ resource "aws_launch_configuration" "ec2_launch_conf" {
 	#(Optional) Enables/disables detailed monitoring. This is enabled by default.
 	
 	
-    lifecycle {
-      create_before_destroy = true
-    }
+    #lifecycle {
+    #  create_before_destroy = true
+    #}
 }
