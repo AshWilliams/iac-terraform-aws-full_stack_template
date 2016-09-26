@@ -1,0 +1,40 @@
+#!/bin/bash -v
+
+yum clean all
+yum -y update
+
+rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+
+yum -y install yum-priorities
+sed -i "7i priority=10" /etc/yum.repos.d/epel.repo
+
+yum -y update
+
+yum -y groupinstall 'Development Tools'
+
+touch /etc/sysconfig/clock
+echo "ZONE=\"Europe/London\"" >> /etc/sysconfig/clock
+ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
+
+yum -y install ntp
+systemctl enable ntpd.service
+systemctl start ntpd.service
+
+yes | cp -f /etc/ntp.conf /etc/ntp.conf.original
+sed -i -e 's/0.centos.pool.ntp.org/time1.google.com/g' /etc/ntp.conf
+sed -i -e 's/1.centos.pool.ntp.org/time2.google.com/g' /etc/ntp.conf
+sed -i -e 's/2.centos.pool.ntp.org/time3.google.com/g' /etc/ntp.conf
+sed -i -e 's/3.centos.pool.ntp.org/time4.google.com/g' /etc/ntp.conf
+systemctl restart ntpd.service
+
+dd if=/dev/zero of=/mnt/.swapfile bs=1M count=1024
+chown root:root /mnt/.swapfile
+chmod 600 /mnt/.swapfile
+
+mkswap /mnt/.swapfile
+swapon /mnt/.swapfile
+sh -c 'echo "/mnt/.swapfile swap swap defaults 0 0" >> /etc/fstab'
+swapon -a
+
+sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
+setenforce 0
