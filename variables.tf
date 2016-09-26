@@ -19,3 +19,7 @@ variable "ec2_instance-root_volume_size" {
 variable "ec2_launch_conf-name" {
   description = "EC2 Launch Configuration Name?:"
 }
+
+variable "ec2_public_keypair" {
+    description = "SSH Public Key that will be used to access the EC2 Instances (Example: ssh-rsa AAABBBCCC999... email@example.com)"
+}
