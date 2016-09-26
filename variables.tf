@@ -15,3 +15,7 @@ variable "ec2_instance-root_volume_size" {
   description = "Size (in GB) of the Root Volume for the EC2 Instances"
   default = 10
 }
+
+variable "ec2_launch_conf-name" {
+  description = "EC2 Launch Configuration Name?:"
+}
