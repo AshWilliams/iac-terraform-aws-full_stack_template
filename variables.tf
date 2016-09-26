@@ -10,3 +10,8 @@ variable "aws_region" {
     description = "Which AWS Region will be used ?"
     default = "eu-west-1"
 }
+
+variable "ec2_instance-root_volume_size" {
+  description = "Size (in GB) of the Root Volume for the EC2 Instances"
+  default = 10
+}
