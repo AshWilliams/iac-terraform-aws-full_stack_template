@@ -27,7 +27,7 @@ resource "aws_launch_configuration" "ec2_launch_conf" {
 	#(Optional) The IAM instance profile to associate with launched instances.
 	
 	
-	#user_data = ""
+	user_data = "${template_file.ec2_instance-userdata.rendered}"
 	#(Optional) The user data to provide when launching the instance.
 	
 	
