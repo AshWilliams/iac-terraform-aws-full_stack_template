@@ -71,11 +71,11 @@ resource "aws_elb" "prj-ec2_elb" {
 	#	interval - (Optional) The publishing interval in minutes. Default: 60 minutes.
 	#	enabled - (Optional) Boolean to enable / disable access_logs. Default is true
 
-	#access_logs {
-	#	bucket = "foo"
-	#	bucket_prefix = "bar"
-	#	interval = 60
-	#}
+	access_logs {
+		bucket = "${aws_s3_bucket.prj-s3_bucket-elb_logs.id}"
+		bucket_prefix = "${var.project_environment}"
+		interval = 60
+	}
 	
 	#tags - (Optional) A mapping of tags to assign to the resource.
 	tags {
