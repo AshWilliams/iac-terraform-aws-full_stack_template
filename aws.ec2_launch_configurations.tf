@@ -1,4 +1,4 @@
-resource "aws_launch_configuration" "ec2_launch_conf" {
+resource "aws_launch_configuration" "prj-ec2_launch_conf" {
 
 	###########################
 	##  Required Parameters  ##
@@ -16,11 +16,11 @@ resource "aws_launch_configuration" "ec2_launch_conf" {
 	###########################
 	
 	
-    name = "ec2-lc-${var.webapp_name}"
+    name = "ec2-lc-${var.project_ecosystem}-${var.project_webapplication}"
 	#(Optional) The name of the launch configuration. If you leave this blank, Terraform will auto-generate a unique name.
 	
 	
-	#key_name = ""
+	key_name = "${aws_key_pair.prj-ec2_key_pair.key_name}"
 	#(Optional) The key name that should be used for the instance.
 	
 	#iam_instance_profile = ""

@@ -1,3 +1,6 @@
-resource "aws_iam_access_key" "iam_acckey-gemv2_zip_ms" {
-    user = "${aws_iam_user.iam_usr-gemv2_zip_ms.name}"
+resource "aws_iam_access_key" "prj-iam_accesskey" {
+
+    user = "${aws_iam_user.prj-iam_user.name}"
+	#(Required) The IAM user to associate with this access key.
+
 }
