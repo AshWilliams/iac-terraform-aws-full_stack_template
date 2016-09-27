@@ -37,15 +37,15 @@ variable "project_environment" {
     description = "On which Environment will the Web Application be launched | [Options: prod | beta | stg]"
 }
 
-variable "var.prj-ec2_asg_minsize" {
+variable "prj-ec2_asg_minsize" {
     description = "The minimum number of Instances available on any given point of time"
 }
 
-variable "var.prj-ec2_asg_maxsize" {
+variable "prj-ec2_asg_maxsize" {
     description = "The maximum number of Instances available on any given point of time"
 }
 
-variable "var.prj-ec2_asg_desirecap" {
+variable "prj-ec2_asg_desirecap" {
     description = "The desire number of Instances available on any given point of time"
 }
 
