@@ -19,6 +19,7 @@ resource "aws_elb" "prj-ec2_elb" {
 	
 	#instances = ["${aws_instance.foo.id}"]
 	#(Optional) A list of instance ids to place in the ELB pool.
+	#NOTE on ELB Instances and ELB Attachments: At this time you cannot use an ELB with in-line instaces in conjunction with an ELB Attachment resource. Doing so will cause a conflict and will overwrite attachments.
 	
 
 	#listener - (Required) A list of listener blocks. Listeners documented below.
