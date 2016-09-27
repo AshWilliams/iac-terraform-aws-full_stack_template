@@ -14,10 +14,10 @@ resource "aws_s3_bucket_policy" "prj-s3_bucket_policy-elb_logs" {
         "s3:PutObject"
       ],
       "Effect": "Allow",
-      "Resource": "arn:aws:s3:::${aws_s3_bucket.prj-s3_bucket-elb_logs.id}/AWSLogs/*",
+      "Resource": "arn:aws:s3:::${aws_s3_bucket.prj-s3_bucket-elb_logs.id}/${var.project_environment}/AWSLogs/*",
       "Principal": {
         "AWS": [
-          "${data.aws_elb_service_account.main.id}"
+          "${data.aws_elb_service_account.master.id}"
         ]
       }
     }
