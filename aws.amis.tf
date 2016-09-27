@@ -21,10 +21,10 @@ data "aws_ami" "centos_ami" {
 		name = "virtualization-type"
 		values = ["hvm"]
 	}
-	filter {
-		name = "owner-id"
-		values = ["679593333241"]
-	}
+	#filter {
+	#	name = "owner-id"
+	#	values = ["679593333241"]
+	#}
 	filter {
 		name = "description"
 		values = ["CentOS Linux 7*"]
