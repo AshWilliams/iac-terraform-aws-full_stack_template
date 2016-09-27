@@ -22,19 +22,19 @@ variable "project_name" {
 }
 
 variable "project_webapplication" {
-    description = "Name of the Web Application | (Example: glm.app)"
+    description = "Name of the Web Application | (Example: glm-app) | Alphanumeric characters, hyphens (-), and underscores (_) are allowed."
 }
 
 variable "project_ecosystem" {
-    description = "Name of the Ecosystem, the Web Application is part of | [Options: gemv1 / gemv2]"
+    description = "Name of the Ecosystem, the Web Application is part of | [Valid Values: gemv1 / gemv2]"
 }
 
 variable "project_interface" {
-    description = "Which interface will the Web Application be used through | [Options: http / cli]"
+    description = "Which interface will the Web Application be used through | [Valid Values: http / cli]"
 }
 
 variable "project_environment" {
-    description = "On which Environment will the Web Application be launched | [Options: prod | beta | stg]"
+    description = "On which Environment will the Web Application be launched | [Valid Values: prod | beta | stg]"
 }
 
 variable "prj-ec2_asg_minsize" {
