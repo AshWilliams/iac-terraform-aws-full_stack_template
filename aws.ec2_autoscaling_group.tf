@@ -75,17 +75,17 @@ resource "aws_autoscaling_group" "prj-ec2_autoscalling_group" {
 	}
 	tag {
 		key = "WebApplication"
-		value = "${var.project_webapplication}}"
+		value = "${var.project_webapplication}"
 		propagate_at_launch = true
 	}
 	tag {
 		key = "Interface"
-		value = "${var.project_interface)}"
+		value = "${var.project_interface}"
 		propagate_at_launch = true
 	}
 	tag {
 		key = "Environment"
-		value = "${var.project_environment}}"
+		value = "${var.project_environment}"
 		propagate_at_launch = true
 	}
 	tag {
@@ -93,4 +93,5 @@ resource "aws_autoscaling_group" "prj-ec2_autoscalling_group" {
 		value = "in-Deployment"
 		propagate_at_launch = true
 	}	
+	
 }
