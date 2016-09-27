@@ -4,6 +4,6 @@ resource "aws_s3_bucket" "prj-s3_bucket-elb_logs" {
 	#(Required) The name of the bucket.
 	#A bucket name cannot contain the character '_'.
 	
-	acl = "log-delivery-write"
+	acl = "private"
 	#(Optional) The canned ACL to apply. Defaults to "private".
 }
