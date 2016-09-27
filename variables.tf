@@ -37,6 +37,17 @@ variable "project_environment" {
     description = "On which Environment will the Web Application be launched | [Options: prod | beta | stg]"
 }
 
+variable "var.prj-ec2_asg_minsize" {
+    description = "The minimum number of Instances available on any given point of time"
+}
+
+variable "var.prj-ec2_asg_maxsize" {
+    description = "The maximum number of Instances available on any given point of time"
+}
+
+variable "var.prj-ec2_asg_desirecap" {
+    description = "The desire number of Instances available on any given point of time"
+}
 
 variable "ec2_instance-root_volume_size" {
   description = "Size (in GB) of the Root Volume for the EC2 Instances"
