@@ -36,7 +36,7 @@ resource "aws_autoscaling_group" "prj-ec2_autoscalling_group" {
 	#target_group_arns
 	#(Optional) A list of aws_target_group ARNs, for use with Application Load Balancing
 	
-	termination_policies = "OldestInstance"
+	termination_policies = ["OldestInstance"]
 	#(Optional) A list of policies to decide how the instances in the auto scale group should be terminated. The allowed values are OldestInstance, NewestInstance, OldestLaunchConfiguration, ClosestToNextInstanceHour, Default.
 	
 	#placement_group
