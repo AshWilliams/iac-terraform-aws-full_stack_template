@@ -1,4 +1,4 @@
-resource "aws_sns_topic_subscription" "prj-sns_topic_subscription-ec2_autoscalling_notification" {
+#resource "aws_sns_topic_subscription" "prj-sns_topic_subscription-ec2_autoscalling_notification" {
 
 	#topic_arn = "${aws_sns_topic.prj-sns_topic-ec2_autoscalling_notification.arn}"
 	#(Required) The ARN of the SNS topic to subscribe to
@@ -26,4 +26,4 @@ resource "aws_sns_topic_subscription" "prj-sns_topic_subscription-ec2_autoscalli
 	#raw_message_delivery
 	#(Optional) Boolean indicating whether or not to enable raw message delivery (the original message is directly passed, not wrapped in JSON with the original message in the message property).
 
-}
+#}
