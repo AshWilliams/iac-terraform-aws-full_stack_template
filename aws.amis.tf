@@ -13,6 +13,7 @@ data "aws_ami" "centos_ami" {
 		name = "name"
 		values = ["CentOS Linux 7 x86_64*"]
 	}
+/*
 	filter {
 		name = "platform"
 		values = ["Cent OS"]
@@ -29,7 +30,7 @@ data "aws_ami" "centos_ami" {
 		name = "description"
 		values = ["CentOS Linux 7*"]
 	}
-	
+*/
 	#name_regex = "^myami-\\d{3}"
 	#(Optional) A regex string to apply to the AMI list returned by AWS. This allows more advanced filtering not supported from the AWS API. This filtering is done locally on what AWS returns, and could have a performance impact if the result is large. It is recommended to combine this with other options to narrow down the list AWS returns.
 	
