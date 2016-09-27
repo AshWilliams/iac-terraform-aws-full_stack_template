@@ -4,7 +4,7 @@ resource "aws_launch_configuration" "prj-ec2_launch_conf" {
 	##  Required Parameters  ##
 	###########################
 	
-    image_id = "ami-7abd0209"
+    image_id = "${aws_ami.centos_ami.id}"
 	#(Required) The EC2 image ID to launch.
 	
     instance_type = "t2.micro"
