@@ -33,7 +33,7 @@ data "aws_ami" "centos_ami" {
 	#name_regex = "^myami-\\d{3}"
 	#(Optional) A regex string to apply to the AMI list returned by AWS. This allows more advanced filtering not supported from the AWS API. This filtering is done locally on what AWS returns, and could have a performance impact if the result is large. It is recommended to combine this with other options to narrow down the list AWS returns.
 	
-	owners = ["679593333241"]
+	#owners = ["679593333241"]
 	#(Optional) Limit search to specific AMI owners. Valid items are the numeric account ID, amazon, or self.
 	
 }
