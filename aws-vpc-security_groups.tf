@@ -1,6 +1,6 @@
 resource "aws_security_group" "vpc-sg-elb" {
 
-	name = "vpc-sg-elb-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+	name = "vpc-sg-ec2-elb-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
 	#(Optional, Forces new resource) The name of the security group. If omitted, Terraform will assign a random, unique name
 	
 	#name_prefix = ""
@@ -16,7 +16,7 @@ resource "aws_security_group" "vpc-sg-elb" {
 	#(Optional) A mapping of tags to assign to the resource.
 	
 	tags {
-		Name = "vpc-sg-elb-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+		Name = "VPC:SG-EC2:ELB-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
 	}
 	
 }
