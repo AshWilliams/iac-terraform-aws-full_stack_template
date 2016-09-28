@@ -1,3 +1,4 @@
+/*
 resource "aws_security_group_rule" "allow_all" {
 
 	type = "ingress"
@@ -29,3 +30,4 @@ resource "aws_security_group_rule" "allow_all" {
 	#(Optional) If true, the security group itself will be added as a source to this ingress rule.	
 	
 }
+*/
