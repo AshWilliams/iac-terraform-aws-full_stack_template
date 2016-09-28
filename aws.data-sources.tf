@@ -1,3 +1,7 @@
+data "aws_caller_identity" "master" { }
+
+data "aws_elb_service_account" "master" { }
+
 data "aws_ami" "centos_ami" {
 
 	most_recent = true
