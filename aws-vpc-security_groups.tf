@@ -17,6 +17,11 @@ resource "aws_security_group" "vpc-sg-elb" {
 	
 	tags {
 		Name = "VPC:SG-EC2:ELB-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+		Resource = "ELB"
+		ResourceGroup = "EC2"
+		Ecosystem = "${var.project_ecosystem}"
+		Application = "${var.project_webapplication}"
+		Environment = "${var.project_environment}"
 	}
 	
 }
