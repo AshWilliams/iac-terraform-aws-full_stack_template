@@ -28,7 +28,7 @@ resource "aws_db_instance" "mariadb" {
 	auto_minor_version_upgrade	= "true"
 	allow_major_version_upgrade	= "false"
 	
-	backup_window				= "Sun:00:00-Sun:03:00"
+	backup_window				= "Sun:00:30-Sun:03:00"
 	backup_retention_period		= "7"
 	
 	tags {
