@@ -13,6 +13,9 @@ resource "aws_db_instance" "mariadb" {
 	username			= "${var.project_db_admin_username}"
 	password			= "${var.project_db_admin_password}"
 
+	#monitoring_role_arn	= ""
+	monitoring_interval		= "0"
+	
 	tags {
 		Name			= "RDS-MariaDB-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
 		Resource		= "MariaDB"
