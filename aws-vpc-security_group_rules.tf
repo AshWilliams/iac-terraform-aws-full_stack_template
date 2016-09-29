@@ -1,3 +1,76 @@
+resource "aws_security_group_rule" "vpc-sgr-ec2-elb-ingress-port-80" {
+	security_group_id	= "${aws_security_group.vpc-sg-ec2-elb.id}"
+	type				= "ingress"
+	protocol			= "tcp"
+	cidr_blocks			= ["0.0.0.0/0"]
+	from_port			= "80"
+	to_port				= "80"
+}
+
+resource "aws_security_group_rule" "vpc-sgr-ec2-elb-egress-port-80" {
+	security_group_id	= "${aws_security_group.vpc-sg-ec2-elb.id}"
+	type				= "egress"
+	protocol			= "tcp"
+	cidr_blocks			= ["0.0.0.0/0"]
+	from_port			= "80"
+	to_port				= "80"
+}
+
+resource "aws_security_group_rule" "vpc-sgr-ec2-inst-ingress-elb-port-80" {
+	security_group_id			= "${aws_security_group.ec2-inst.id}"
+	type						= "ingress"
+	protocol					= "tcp"
+	source_security_group_id	= "${aws_security_group.vpc-sg-ec2-elb.id}"
+	from_port					= "80"
+	to_port						= "80"
+}
+
+resource "aws_security_group_rule" "vpc-sgr-ec2-inst-egress-elb-port-80" {
+	security_group_id			= "${aws_security_group.ec2-inst.id}"
+	type						= "egress"
+	protocol					= "tcp"
+	source_security_group_id	= "${aws_security_group.vpc-sg-ec2-elb.id}"
+	from_port					= "80"
+	to_port						= "80"
+}
+
+resource "aws_security_group_rule" "elcache-memc-ingress-port-11211" {
+	security_group_id			= "${aws_security_group.elcache-memcached.id}"
+	type						= "ingress"
+	protocol					= "tcp"
+	source_security_group_id	= "${aws_security_group.ec2-inst.id}"
+	from_port					= "11211"
+	to_port						= "11211"
+}
+
+resource "aws_security_group_rule" "elcache-memc-egress-port-11211" {
+	security_group_id			= "${aws_security_group.elcache-memcached.id}"
+	type						= "egress"
+	protocol					= "tcp"
+	source_security_group_id	= "${aws_security_group.ec2-inst.id}"
+	from_port					= "11211"
+	to_port						= "11211"
+}
+
+resource "aws_security_group_rule" "elcache-redis-ingress-port-6379" {
+	security_group_id			= "${aws_security_group.elcache-redis.id}"
+	type						= "ingress"
+	protocol					= "tcp"
+	source_security_group_id	= "${aws_security_group.ec2-inst.id}"
+	from_port					= "6379"
+	to_port						= "6379"
+}
+
+resource "aws_security_group_rule" "elcache-redis-egress-port-6379" {
+	security_group_id			= "${aws_security_group.elcache-redis.id}"
+	type						= "egress"
+	protocol					= "tcp"
+	source_security_group_id	= "${aws_security_group.ec2-inst.id}"
+	from_port					= "6379"
+	to_port						= "6379"
+}
+
+
 /*
 AWS_SECURITY_GROUP_RULE
 Provides a security group rule resource. Represents a single ingress or egress group rule, which can be added to external Security Groups.
@@ -42,39 +115,3 @@ The following attributes are exported:
 	to_port		- The destination port
 	protocol	– The protocol used
 */
-
-resource "aws_security_group_rule" "vpc-sgr-ec2-elb-ingress-port-80" {
-	security_group_id	= "${aws_security_group.vpc-sg-ec2-elb.id}"
-	type				= "ingress"
-	protocol			= "tcp"
-	cidr_blocks			= ["0.0.0.0/0"]
-	from_port			= "80"
-	to_port				= "80"
-}
-
-resource "aws_security_group_rule" "vpc-sgr-ec2-elb-egress-port-80" {
-	security_group_id	= "${aws_security_group.vpc-sg-ec2-elb.id}"
-	type				= "egress"
-	protocol			= "tcp"
-	cidr_blocks			= ["0.0.0.0/0"]
-	from_port			= "80"
-	to_port				= "80"
-}
-
-resource "aws_security_group_rule" "vpc-sgr-ec2-inst-ingress-elb-port-80" {
-	security_group_id			= "${aws_security_group.vpc-sg-ec2-inst.id}"
-	type						= "ingress"
-	protocol					= "tcp"
-	source_security_group_id	= "${aws_security_group.vpc-sg-ec2-elb.id}"
-	from_port					= "80"
-	to_port						= "80"
-}
-
-resource "aws_security_group_rule" "vpc-sgr-ec2-inst-egress-elb-port-80" {
-	security_group_id			= "${aws_security_group.vpc-sg-ec2-inst.id}"
-	type						= "egress"
-	protocol					= "tcp"
-	source_security_group_id	= "${aws_security_group.vpc-sg-ec2-elb.id}"
-	from_port					= "80"
-	to_port						= "80"
-}
