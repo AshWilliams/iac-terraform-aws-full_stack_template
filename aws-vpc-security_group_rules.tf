@@ -70,6 +70,23 @@ resource "aws_security_group_rule" "elcache-redis-egress-port-6379" {
 	to_port						= "6379"
 }
 
+resource "aws_security_group_rule" "efs-mnt-ingress-port-2049" {
+	security_group_id			= "${aws_security_group.efs-mounts.id}"
+	type						= "ingress"
+	protocol					= "tcp"
+	source_security_group_id	= "${aws_security_group.ec2-inst.id}"
+	from_port					= "2049"
+	to_port						= "2049"
+}
+
+resource "aws_security_group_rule" "efs-mnt-egress-port-2049" {
+	security_group_id			= "${aws_security_group.efs-mounts.id}"
+	type						= "egress"
+	protocol					= "tcp"
+	source_security_group_id	= "${aws_security_group.ec2-inst.id}"
+	from_port					= "2049"
+	to_port						= "2049"
+}
 
 /*
 AWS_SECURITY_GROUP_RULE
