@@ -1,3 +1,56 @@
+resource "aws_security_group" "vpc-sg-ec2-elb" {
+	name		= "vpc-sg-ec2-elb-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+	description	= "VPC Security Group controlling access to Project (${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}) Elastic LoadBalancer (${aws_elb.ec2-elb.id})"
+	tags {
+		Name			= "VPC:SG-EC2:ELB-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+		Resource		= "ELB"
+		ResourceGroup	= "EC2"
+		Ecosystem		= "${var.project_ecosystem}"
+		Application		= "${var.project_webapplication}"
+		Environment		= "${var.project_environment}"
+	}
+}
+
+resource "aws_security_group" "vpc-sg-ec2-inst" {
+	name		= "vpc-sg-ec2-inst-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+	description	= "VPC Security Group controlling access to Project (${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}) EC2 Instances"
+	tags {
+		Name			= "VPC:SG-EC2:INST-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+		Resource		= "Instance"
+		ResourceGroup	= "EC2"
+		Ecosystem		= "${var.project_ecosystem}"
+		Application		= "${var.project_webapplication}"
+		Environment		= "${var.project_environment}"
+	}
+}
+
+resource "aws_security_group" "elcache-memcached" {
+	name		= "vpc-sg-elcache-memc-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+	description	= "VPC Security Group controlling access to Project (${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}) ElastiCache Memcached Cluster"
+	tags {
+		Name			= "VPC:SG-ElCache:MemC-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+		Resource		= "MemCached"
+		ResourceGroup	= "ElastiCache"
+		Ecosystem		= "${var.project_ecosystem}"
+		Application		= "${var.project_webapplication}"
+		Environment		= "${var.project_environment}"
+	}
+}
+
+resource "aws_security_group" "elcache-redis" {
+	name		= "vpc-sg-elcache-redis-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+	description	= "VPC Security Group controlling access to Project (${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}) ElastiCache Redis Cluster"
+	tags {
+		Name			= "VPC:SG-ElCache:Redis-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+		Resource		= "Redis"
+		ResourceGroup	= "ElastiCache"
+		Ecosystem		= "${var.project_ecosystem}"
+		Application		= "${var.project_webapplication}"
+		Environment		= "${var.project_environment}"
+	}
+}
+
+
 /*
 AWS_SECURITY_GROUP
 Provides a security group resource.
@@ -32,29 +85,3 @@ The following attributes are exported:
 	ingress		- The ingress rules. See above for more.
 	egress		- The egress rules. See above for more.
 */
-
-resource "aws_security_group" "vpc-sg-ec2-elb" {
-	name		= "vpc-sg-ec2-elb-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
-	description	= "VPC Security Group controlling access to Project (${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}) Elastic LoadBalancer (${aws_elb.ec2-elb.id})"
-	tags {
-		Name			= "VPC:SG-EC2:ELB-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
-		Resource		= "ELB"
-		ResourceGroup	= "EC2"
-		Ecosystem		= "${var.project_ecosystem}"
-		Application		= "${var.project_webapplication}"
-		Environment		= "${var.project_environment}"
-	}
-}
-
-resource "aws_security_group" "vpc-sg-ec2-inst" {
-	name		= "vpc-sg-ec2-inst-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
-	description	= "VPC Security Group controlling access to Project (${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}) EC2 Instances"
-	tags {
-		Name			= "VPC:SG-EC2:INST-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
-		Resource		= "Instance"
-		ResourceGroup	= "EC2"
-		Ecosystem		= "${var.project_ecosystem}"
-		Application		= "${var.project_webapplication}"
-		Environment		= "${var.project_environment}"
-	}
-}
