@@ -10,7 +10,6 @@ resource "aws_elasticache_cluster" "memcached" {
 
 	port					= 11211
 	#security_group_ids		= [""]
-	availability_zones		= ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
 }
 
 resource "aws_elasticache_cluster" "redis" {
@@ -25,7 +24,6 @@ resource "aws_elasticache_cluster" "redis" {
 
 	port					= 6379
 	#security_group_ids		= [""]
-	availability_zones		= ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
 }
 
 
@@ -97,7 +95,7 @@ resource "aws_elasticache_cluster" "bar" {
 	availability_zone
 	#(Optional) The Availability Zone for the cache cluster. If you want to create cache nodes in multi-az, use availability_zones
 
-	availability_zones
+	availability_zones = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
 	#(Optional, Memcached only) List of Availability Zones in which the cache nodes will be created. If you want to create cache nodes in single-az, use availability_zone
 
 	tags
