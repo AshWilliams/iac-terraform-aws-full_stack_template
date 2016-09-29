@@ -53,3 +53,16 @@ variable "ec2_instance-root_volume_size" {
   description = "Size (in GB) of the Root Volume for the EC2 Instances"
   default = 10
 }
+
+
+variable "project_db_name" {
+    description = "Name of the Project's main Database that will be created on the RDS Instance"
+}
+
+variable "project_db_admin_username" {
+    description = "Username of the RDS Instance Administrator"
+}
+
+variable "project_db_admin_password" {
+    description = "Password of the RDS Instance Administrator"
+}
