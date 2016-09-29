@@ -1,6 +1,6 @@
 resource "aws_efs_file_system" "volume" {
 	creation_token = "efs-vol-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
-	reference_name = "EFS-Volume-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+	#reference_name = "EFS-Volume-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
 	performance_mode = "generalPurpose"
 	tags {
 		Name			= "EFS-Volume-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
