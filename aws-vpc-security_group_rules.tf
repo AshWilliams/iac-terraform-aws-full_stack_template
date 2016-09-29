@@ -88,6 +88,24 @@ resource "aws_security_group_rule" "efs-mnt-egress-port-2049" {
 	to_port						= "2049"
 }
 
+resource "aws_security_group_rule" "rds-inst-ingress-port-3306" {
+	security_group_id			= "${aws_security_group.rds-instances.id}"
+	type						= "ingress"
+	protocol					= "tcp"
+	source_security_group_id	= "${aws_security_group.ec2-inst.id}"
+	from_port					= "3306"
+	to_port						= "3306"
+}
+
+resource "aws_security_group_rule" "rds-inst-egress-port-3306" {
+	security_group_id			= "${aws_security_group.rds-instances.id}"
+	type						= "egress"
+	protocol					= "tcp"
+	source_security_group_id	= "${aws_security_group.ec2-inst.id}"
+	from_port					= "3306"
+	to_port						= "3306"
+}
+
 /*
 AWS_SECURITY_GROUP_RULE
 Provides a security group rule resource. Represents a single ingress or egress group rule, which can be added to external Security Groups.
