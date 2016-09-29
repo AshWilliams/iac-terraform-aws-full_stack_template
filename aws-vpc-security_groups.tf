@@ -1,4 +1,4 @@
-resource "aws_security_group" "vpc-sg-ec2-elb" {
+resource "aws_security_group" "ec2-elb" {
 	name		= "vpc-sg-ec2-elb-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
 	description	= "VPC Security Group controlling access to Project (${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}) Elastic LoadBalancer (${aws_elb.ec2-elb.id})"
 	tags {
