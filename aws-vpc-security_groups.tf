@@ -63,6 +63,19 @@ resource "aws_security_group" "efs-mounts" {
 	}
 }
 
+resource "aws_security_group" "rds-instances" {
+	name		= "vpc-sg-rds-inst-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+	description	= "VPC Security Group controlling access to Project (${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}) RDS DB Instances"
+	tags {
+		Name			= "VPC:SG-RDS:inst-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+		Resource		= "DB Instancea"
+		ResourceGroup	= "RDS - Relational Database Service"
+		Ecosystem		= "${var.project_ecosystem}"
+		Application		= "${var.project_webapplication}"
+		Environment		= "${var.project_environment}"
+	}
+}
+
 
 /*
 AWS_SECURITY_GROUP
