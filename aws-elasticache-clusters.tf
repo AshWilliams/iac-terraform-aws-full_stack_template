@@ -1,5 +1,5 @@
 resource "aws_elasticache_cluster" "memcached" {
-	cluster_id				= "mem-cls-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+	cluster_id				= "m-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
 
 	engine					= "memcached"
 	engine_version			= "1.4.24"
@@ -14,7 +14,7 @@ resource "aws_elasticache_cluster" "memcached" {
 }
 
 resource "aws_elasticache_cluster" "redis" {
-	cluster_id				= "red-cls-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+	cluster_id				= "r-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
 
 	engine					= "redis"
 	engine_version			= "2.8.24"
