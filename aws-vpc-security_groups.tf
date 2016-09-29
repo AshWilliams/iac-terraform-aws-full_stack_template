@@ -50,6 +50,19 @@ resource "aws_security_group" "elcache-redis" {
 	}
 }
 
+resource "aws_security_group" "efs-mounts" {
+	name		= "vpc-sg-efs-mnt-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+	description	= "VPC Security Group controlling access to Project (${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}) EFS Mount Targets"
+	tags {
+		Name			= "VPC:SG-EFS:mnt-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+		Resource		= "Mount Targets"
+		ResourceGroup	= "EFS - Elastic File System"
+		Ecosystem		= "${var.project_ecosystem}"
+		Application		= "${var.project_webapplication}"
+		Environment		= "${var.project_environment}"
+	}
+}
+
 
 /*
 AWS_SECURITY_GROUP
