@@ -1,5 +1,5 @@
-resource "aws_security_group_rule" "vpc-sgr-ec2-elb-ingress-port-80" {
-	security_group_id	= "${aws_security_group.vpc-sg-ec2-elb.id}"
+resource "aws_security_group_rule" "ec2-elb-ingress-port-80" {
+	security_group_id	= "${aws_security_group.ec2-elb.id}"
 	type				= "ingress"
 	protocol			= "tcp"
 	cidr_blocks			= ["0.0.0.0/0"]
@@ -7,8 +7,8 @@ resource "aws_security_group_rule" "vpc-sgr-ec2-elb-ingress-port-80" {
 	to_port				= "80"
 }
 
-resource "aws_security_group_rule" "vpc-sgr-ec2-elb-egress-port-80" {
-	security_group_id	= "${aws_security_group.vpc-sg-ec2-elb.id}"
+resource "aws_security_group_rule" "ec2-elb-egress-port-80" {
+	security_group_id	= "${aws_security_group.ec2-elb.id}"
 	type				= "egress"
 	protocol			= "tcp"
 	cidr_blocks			= ["0.0.0.0/0"]
@@ -16,20 +16,20 @@ resource "aws_security_group_rule" "vpc-sgr-ec2-elb-egress-port-80" {
 	to_port				= "80"
 }
 
-resource "aws_security_group_rule" "vpc-sgr-ec2-inst-ingress-elb-port-80" {
+resource "aws_security_group_rule" "ec2-inst-ingress-elb-port-80" {
 	security_group_id			= "${aws_security_group.ec2-inst.id}"
 	type						= "ingress"
 	protocol					= "tcp"
-	source_security_group_id	= "${aws_security_group.vpc-sg-ec2-elb.id}"
+	source_security_group_id	= "${aws_security_group.ec2-elb.id}"
 	from_port					= "80"
 	to_port						= "80"
 }
 
-resource "aws_security_group_rule" "vpc-sgr-ec2-inst-egress-elb-port-80" {
+resource "aws_security_group_rule" "ec2-inst-egress-elb-port-80" {
 	security_group_id			= "${aws_security_group.ec2-inst.id}"
 	type						= "egress"
 	protocol					= "tcp"
-	source_security_group_id	= "${aws_security_group.vpc-sg-ec2-elb.id}"
+	source_security_group_id	= "${aws_security_group.ec2-elb.id}"
 	from_port					= "80"
 	to_port						= "80"
 }
