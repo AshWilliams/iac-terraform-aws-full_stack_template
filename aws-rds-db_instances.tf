@@ -24,11 +24,11 @@ resource "aws_db_instance" "mariadb" {
 	
 	apply_immediately			= "true"
 	
-	maintenance_window			= "Sun:04:30-Sun:07:00"	
+	maintenance_window			= "03:30-06:00"	
 	auto_minor_version_upgrade	= "true"
 	allow_major_version_upgrade	= "false"
 	
-	backup_window				= "Sun:01:30-Sun:04:00"
+	backup_window				= "00:30-03:00"
 	backup_retention_period		= "7"
 	
 	tags {
