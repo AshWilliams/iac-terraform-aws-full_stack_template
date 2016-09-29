@@ -24,7 +24,7 @@ resource "aws_db_instance" "mariadb" {
 	
 	apply_immediately			= "true"
 	
-	maintenance_window			= "03:30-06:00"	
+	maintenance_window			= "Sun:03:30-Sun:06:00"	
 	auto_minor_version_upgrade	= "true"
 	allow_major_version_upgrade	= "false"
 	
