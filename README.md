@@ -1,4 +1,5 @@
-# IaC (Infrastructure as Code) | Terraform | AWS | Full-Stack Templating
+# IaC (Infrastructure as Code)
+## Terraform | AWS | Full-Stack Templating
 
 ### AWS Resources Map:
 
