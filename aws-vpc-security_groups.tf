@@ -11,7 +11,7 @@ resource "aws_security_group" "vpc-sg-ec2-elb" {
 	}
 }
 
-resource "aws_security_group" "vpc-sg-ec2-inst" {
+resource "aws_security_group" "ec2-inst" {
 	name		= "vpc-sg-ec2-inst-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
 	description	= "VPC Security Group controlling access to Project (${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}) EC2 Instances"
 	tags {
