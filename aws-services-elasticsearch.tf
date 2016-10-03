@@ -33,7 +33,7 @@ resource "aws_elasticsearch_domain" "es-cluster" {
             "Action": "es:*",
             "Principal": "*",
             "Effect": "Allow",
-            "Resource": "arn:aws:es:eu-west-1:${data.aws_caller_identity.master.account_id}:domain/es-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}/*"
+            "Resource": "arn:aws:es:eu-west-1:${data.aws_caller_identity.aws_account_id.account_id}:domain/es-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}/*"
         }
     ]
 }
