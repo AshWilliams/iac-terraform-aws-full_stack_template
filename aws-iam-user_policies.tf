@@ -1,9 +1,9 @@
 resource "aws_iam_user_policy" "prj-iam_cuplc" {
 
-	name = "iam-cup-ec2-${var.project_ecosystem}-${var.project_webapplication}"
+	name = "iam-cup-ec2-${var.prj_ecosystem}-${var.prj_application}"
 	#(Required) Name of the policy.
 	
-	user = "${aws_iam_user.prj-iam_user.name}"
+	user = "${aws_iam_user.prj_user.name}"
 	#(Required) IAM user to which to attach this policy.
 	
 	
