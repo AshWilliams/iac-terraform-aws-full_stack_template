@@ -1,4 +1,4 @@
-resource "aws_key_pair" "prj-ec2_key_pair" {
-  key_name = "ec2-kp-${var.project_ecosystem}-${var.project_webapplication}" 
-  public_key	= "${var.ec2_keypair_public}"
+resource "aws_key_pair" "master" {
+  key_name    = "ec2-kp-${var.prj_ecosystem}-${var.prj_application}"
+  public_key  = "${var.ssh_keypair_public}"
 }
