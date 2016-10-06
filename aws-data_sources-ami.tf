@@ -1,10 +1,10 @@
-data "aws_ami" "centos7_ami" {
-	most_recent	= true
-	
-	filter {
-		name	= "name"
-		values	= ["CentOS Linux 7 x86_64*"]
-	}
+data "aws_ami" "centos7" {
+  most_recent	= true
+  
+  filter {
+    name    = "name"
+    values  = ["CentOS Linux 7 x86_64*"]
+  }
 }
 
 /*
