@@ -15,7 +15,7 @@ resource "aws_autoscaling_group" "prj-ec2_autoscalling_group" {
 	availability_zones = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
 	#(Optional) A list of AZs to launch resources in. Required only if you do not specify any vpc_zone_identifier
 	
-	launch_configuration = "${aws_launch_configuration.prj-ec2_launch_conf.name}"
+	launch_configuration = "${aws_launch_configuration.node.name}"
 	#(Required) The name of the launch configuration to use.
 	
 	health_check_grace_period = "300"
