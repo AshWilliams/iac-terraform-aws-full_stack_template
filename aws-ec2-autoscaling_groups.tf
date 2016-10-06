@@ -80,7 +80,7 @@ resource "aws_autoscaling_group" "prj-ec2_autoscalling_group" {
 	}
 	tag {
 		key = "Interface"
-		value = "${var.project_interface}"
+		value = "${var.prj_interface}"
 		propagate_at_launch = true
 	}
 	tag {
