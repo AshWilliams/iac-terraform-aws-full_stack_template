@@ -1,52 +1,54 @@
 resource "aws_elasticsearch_domain" "es-cluster" {
-    domain_name				= "es-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
-    elasticsearch_version	= "2.3"
-
-	cluster_config {
-		instance_type				= "t2.micro.elasticsearch"
-		instance_count				= "3"
-		dedicated_master_enabled	= "true"
-		dedicated_master_type		= "t2.micro.elasticsearch"
-		dedicated_master_count		= "3"
-		zone_awareness_enabled		= "false"
+  count = "${var.aws_elasticsearch_cluster_enabled}"
+  
+  domain_name           = "es-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+  elasticsearch_version = "2.3"
+  
+  cluster_config {
+    instance_type             = "t2.micro.elasticsearch"
+    instance_count            = "3"
+    dedicated_master_enabled  = "true"
+    dedicated_master_type     = "t2.micro.elasticsearch"
+    dedicated_master_count    = "3"
+    zone_awareness_enabled    = "false"
+  }
+  
+  ebs_options {
+    ebs_enabled = "true"
+    volume_type = "gp2"
+    volume_size = "10"
 	}
-	
-	ebs_options {
-		ebs_enabled	= "true"
-		volume_type	= "gp2"
-		volume_size	= "10"
-	}
-	
-    snapshot_options {
-        automated_snapshot_start_hour = 00
-    }
-	
-    advanced_options {
-        "rest.action.multi.allow_explicit_index" = true
-    }
-
-    access_policies = <<CONFIG
+  
+  snapshot_options {
+    automated_snapshot_start_hour = 00
+  }
+  
+  advanced_options {
+    "rest.action.multi.allow_explicit_index" = true
+  }
+  
+  access_policies = <<CONFIG
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Action": "es:*",
-            "Principal": "*",
-            "Effect": "Allow",
-            "Resource": "arn:aws:es:eu-west-1:${data.aws_caller_identity.aws_account_id.account_id}:domain/es-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}/*"
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "es:*",
+      "Principal": "*",
+      "Effect": "Allow",
+      "Resource": "arn:aws:es:eu-west-1:${data.aws_caller_identity.aws_account_id.account_id}:domain/es-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}/*"
+    }
+  ]
 }
 CONFIG
 
-    tags {
-		Domain = "es-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
-		Resource		= "ElasticSearch"
-		ResourceGroup	= "AWS Services"
-		Ecosystem		= "${var.project_ecosystem}"
-		Application		= "${var.project_webapplication}"
-		Environment		= "${var.project_environment}"
-    }
+  tags {
+    Domain        = "es-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+    Resource      = "ElasticSearch"
+    ResourceGroup = "AWS Services"
+    Ecosystem     = "${var.project_ecosystem}"
+    Application   = "${var.project_webapplication}"
+    Environment   = "${var.project_environment}"
+  }
 }
 
 ###########################
