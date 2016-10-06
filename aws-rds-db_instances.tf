@@ -1,45 +1,45 @@
 resource "aws_db_instance" "mariadb" {
-	
-	identifier			= "rds-mariadb-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
-	
-	engine				= "mariadb"
-	engine_version		= "10.0.24"
-	
-	instance_class		= "db.t2.micro"
-	storage_type		= "gp2"
-	allocated_storage	= "10"
-
-	port					= "3306"
-	multi_az				= "false"
-	availability_zone		= "eu-west-1a"
-	publicly_accessible		= "true"
-	vpc_security_group_ids	= ["${aws_security_group.rds-instances.id}"]
-	
-	name				= "${var.project_db_name}"
-	username			= "${var.project_db_admin_username}"
-	password			= "${var.project_db_admin_password}"
-
-	#monitoring_role_arn	= ""
-	monitoring_interval		= "0"
-	
-	apply_immediately			= "true"
-	
-	maintenance_window			= "Sun:03:30-Sun:06:00"	
-	auto_minor_version_upgrade	= "true"
-	allow_major_version_upgrade	= "false"
-	
-	backup_window				= "00:30-03:00"
-	backup_retention_period		= "7"
-	
-	tags {
-		Name			= "RDS-MariaDB-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
-		Resource		= "MariaDB"
-		ResourceGroup	= "RDS"
-		Ecosystem		= "${var.project_ecosystem}"
-		Application		= "${var.project_webapplication}"
-		Environment		= "${var.project_environment}"
-	}
-	
+  count = "${var.aws_rds_cluster_mariadb_enabled}"
+  
+  identifier  = "rds-mariadb-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+  
+  engine          = "mariadb"
+  engine_version  = "10.0.24"
+  
+  instance_class    = "db.t2.micro"
+  storage_type      = "gp2"
+  allocated_storage = "10"
+  
+  port                    = "3306"
+  multi_az                = "false"
+  availability_zone       = "eu-west-1a"
+  publicly_accessible     = "true"
+  vpc_security_group_ids  = ["${aws_security_group.rds-instances.id}"]
+  
+  name      = "${var.project_db_name}"
+  username  = "${var.project_db_admin_username}"
+  password  = "${var.project_db_admin_password}"
+  
+  #monitoring_role_arn  = ""
+  monitoring_interval   = "0"
+  
+  apply_immediately = "true"
+  
+  maintenance_window          = "Sun:03:30-Sun:06:00"
+  auto_minor_version_upgrade  = "true"
+  allow_major_version_upgrade = "false"
+  
+  backup_window           = "00:30-03:00"
+  backup_retention_period = "7"
+  
+  tags {
+    Name          = "RDS-MariaDB-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+    Resource      = "MariaDB"
+    ResourceGroup = "RDS"
+    Ecosystem     = "${var.project_ecosystem}"
+    Application   = "${var.project_webapplication}"
+    Environment   = "${var.project_environment}"
+  }
 }
 
 /*
