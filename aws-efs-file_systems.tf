@@ -1,14 +1,14 @@
 resource "aws_efs_file_system" "volume" {
-	creation_token = "efs-vol-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
-	#reference_name = "EFS-Volume-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+	creation_token = "efs-vol-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
+	#reference_name = "EFS-Volume-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
 	performance_mode = "generalPurpose"
 	tags {
-		Name			= "EFS-Volume-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+		Name			= "EFS-Volume-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
 		Resource		= "Volume"
 		ResourceGroup	= "EFS"
-		Ecosystem		= "${var.project_ecosystem}"
-		Application		= "${var.project_webapplication}"
-		Environment		= "${var.project_environment}"
+		Ecosystem		= "${var.prj_ecosystem}"
+		Application		= "${var.prj_application}"
+		Environment		= "${var.prj_environment}"
 	}
 }
 
