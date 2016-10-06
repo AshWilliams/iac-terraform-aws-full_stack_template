@@ -72,7 +72,7 @@ resource "aws_elb" "ec2-elb" {
 	#	enabled - (Optional) Boolean to enable / disable access_logs. Default is true
 
 	access_logs {
-		bucket = "${aws_s3_bucket.prj-s3_bucket-elb_logs.id}"
+		bucket = "${aws_s3_bucket.elb_logs.id}"
 		bucket_prefix = "${var.prj_environment}"
 		interval = 60
 	}
