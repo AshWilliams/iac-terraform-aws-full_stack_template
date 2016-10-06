@@ -1,17 +1,5 @@
-resource "aws_elasticache_cluster" "memcached" {
-  cluster_id  = "m-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
-  engine                = "memcached"
-  engine_version        = "1.4.24"
-  parameter_group_name  = "default.memcached1.4"
-  
-  node_type       = "cache.t2.micro"
-  num_cache_nodes = 1
-  
-  port                = 11211
-  security_group_ids  = ["${aws_security_group.elcache-memcached.id}"]
-}
-
 resource "aws_elasticache_cluster" "redis" {
+  count       = "${var.aws_elasticache_cluster_redis_enabled}"
   cluster_id  = "r-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
   
   engine                = "redis"
@@ -23,6 +11,20 @@ resource "aws_elasticache_cluster" "redis" {
   
   port                = 6379
   security_group_ids  = ["${aws_security_group.elcache-redis.id}"]
+}
+
+resource "aws_elasticache_cluster" "memcached" {
+  count       = "${var.aws_elasticache_cluster_memcached_enabled}"
+  cluster_id  = "m-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+  engine                = "memcached"
+  engine_version        = "1.4.24"
+  parameter_group_name  = "default.memcached1.4"
+  
+  node_type       = "cache.t2.micro"
+  num_cache_nodes = 1
+  
+  port                = 11211
+  security_group_ids  = ["${aws_security_group.elcache-memcached.id}"]
 }
 
 
