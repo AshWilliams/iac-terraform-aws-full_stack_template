@@ -3,7 +3,7 @@ resource "aws_instance" "ec2_instance" {
 	
     instance_type = "t2.micro"
 	
-	user_data = "${template_file.ec2_instance-userdata.rendered}"
+	user_data = "${template_file.node_userdata.rendered}"
 
 	root_block_device {
 		volume_type		= "gp2"
