@@ -1,6 +1,6 @@
-resource "aws_autoscaling_notification" "prj-ec2_autoscalling_notification" {
+resource "aws_autoscaling_notification" "asg_notifications" {
 
-	group_names = ["${aws_autoscaling_group.prj-ec2_autoscalling_group.name}"]
+	group_names = ["${aws_autoscaling_group.asg.name}"]
 	#(Required) A list of AutoScaling Group Names
 	
 	#notifications = [""]
@@ -12,7 +12,7 @@ resource "aws_autoscaling_notification" "prj-ec2_autoscalling_notification" {
 		"autoscaling:EC2_INSTANCE_TERMINATE_ERROR"
 	]
 	
-	topic_arn = "${aws_sns_topic.prj-sns_topic-ec2_autoscalling_notification.arn}"
+	topic_arn = "${aws_sns_topic.prj-sns_topic-asg_notifications.arn}"
 	#(Required) The Topic ARN for notifications to be sent through
 	
 }
