@@ -1,78 +1,78 @@
 resource "aws_security_group" "ec2-elb" {
-	name		= "vpc-sg-ec2-elb-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
-	description	= "VPC Security Group controlling access to Project (${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}) Elastic LoadBalancer (${aws_elb.ec2-elb.id})"
+	name		= "vpc-sg-ec2-elb-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
+	description	= "VPC Security Group controlling access to Project (${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}) Elastic LoadBalancer (${aws_elb.ec2-elb.id})"
 	tags {
-		Name			= "VPC:SG-EC2:ELB-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+		Name			= "VPC:SG-EC2:ELB-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
 		Resource		= "ELB"
 		ResourceGroup	= "EC2"
-		Ecosystem		= "${var.project_ecosystem}"
-		Application		= "${var.project_webapplication}"
-		Environment		= "${var.project_environment}"
+		Ecosystem		= "${var.prj_ecosystem}"
+		Application		= "${var.prj_application}"
+		Environment		= "${var.prj_environment}"
 	}
 }
 
 resource "aws_security_group" "ec2-inst" {
-	name		= "vpc-sg-ec2-inst-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
-	description	= "VPC Security Group controlling access to Project (${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}) EC2 Instances"
+	name		= "vpc-sg-ec2-inst-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
+	description	= "VPC Security Group controlling access to Project (${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}) EC2 Instances"
 	tags {
-		Name			= "VPC:SG-EC2:INST-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+		Name			= "VPC:SG-EC2:INST-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
 		Resource		= "Instance"
 		ResourceGroup	= "EC2"
-		Ecosystem		= "${var.project_ecosystem}"
-		Application		= "${var.project_webapplication}"
-		Environment		= "${var.project_environment}"
+		Ecosystem		= "${var.prj_ecosystem}"
+		Application		= "${var.prj_application}"
+		Environment		= "${var.prj_environment}"
 	}
 }
 
 resource "aws_security_group" "elcache-memcached" {
-	name		= "vpc-sg-elcache-memc-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
-	description	= "VPC Security Group controlling access to Project (${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}) ElastiCache Memcached Cluster"
+	name		= "vpc-sg-elcache-memc-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
+	description	= "VPC Security Group controlling access to Project (${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}) ElastiCache Memcached Cluster"
 	tags {
-		Name			= "VPC:SG-ElCache:MemC-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+		Name			= "VPC:SG-ElCache:MemC-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
 		Resource		= "MemCached"
 		ResourceGroup	= "ElastiCache"
-		Ecosystem		= "${var.project_ecosystem}"
-		Application		= "${var.project_webapplication}"
-		Environment		= "${var.project_environment}"
+		Ecosystem		= "${var.prj_ecosystem}"
+		Application		= "${var.prj_application}"
+		Environment		= "${var.prj_environment}"
 	}
 }
 
 resource "aws_security_group" "elcache-redis" {
-	name		= "vpc-sg-elcache-redis-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
-	description	= "VPC Security Group controlling access to Project (${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}) ElastiCache Redis Cluster"
+	name		= "vpc-sg-elcache-redis-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
+	description	= "VPC Security Group controlling access to Project (${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}) ElastiCache Redis Cluster"
 	tags {
-		Name			= "VPC:SG-ElCache:Redis-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+		Name			= "VPC:SG-ElCache:Redis-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
 		Resource		= "Redis"
 		ResourceGroup	= "ElastiCache"
-		Ecosystem		= "${var.project_ecosystem}"
-		Application		= "${var.project_webapplication}"
-		Environment		= "${var.project_environment}"
+		Ecosystem		= "${var.prj_ecosystem}"
+		Application		= "${var.prj_application}"
+		Environment		= "${var.prj_environment}"
 	}
 }
 
 resource "aws_security_group" "efs-mounts" {
-	name		= "vpc-sg-efs-mnt-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
-	description	= "VPC Security Group controlling access to Project (${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}) EFS Mount Targets"
+	name		= "vpc-sg-efs-mnt-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
+	description	= "VPC Security Group controlling access to Project (${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}) EFS Mount Targets"
 	tags {
-		Name			= "VPC:SG-EFS:mnt-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+		Name			= "VPC:SG-EFS:mnt-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
 		Resource		= "Mount Targets"
 		ResourceGroup	= "EFS - Elastic File System"
-		Ecosystem		= "${var.project_ecosystem}"
-		Application		= "${var.project_webapplication}"
-		Environment		= "${var.project_environment}"
+		Ecosystem		= "${var.prj_ecosystem}"
+		Application		= "${var.prj_application}"
+		Environment		= "${var.prj_environment}"
 	}
 }
 
 resource "aws_security_group" "rds-instances" {
-	name		= "vpc-sg-rds-inst-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
-	description	= "VPC Security Group controlling access to Project (${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}) RDS DB Instances"
+	name		= "vpc-sg-rds-inst-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
+	description	= "VPC Security Group controlling access to Project (${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}) RDS DB Instances"
 	tags {
-		Name			= "VPC:SG-RDS:inst-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+		Name			= "VPC:SG-RDS:inst-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
 		Resource		= "DB Instancea"
 		ResourceGroup	= "RDS - Relational Database Service"
-		Ecosystem		= "${var.project_ecosystem}"
-		Application		= "${var.project_webapplication}"
-		Environment		= "${var.project_environment}"
+		Ecosystem		= "${var.prj_ecosystem}"
+		Application		= "${var.prj_application}"
+		Environment		= "${var.prj_environment}"
 	}
 }
 
