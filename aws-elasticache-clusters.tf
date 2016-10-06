@@ -1,7 +1,7 @@
 resource "aws_elasticache_cluster" "memcached" {
-	cluster_id	= "m-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+	cluster_id  = "m-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
 
-	engine								= "memcached"
+	engine                = "memcached"
 	engine_version				= "1.4.24"
 	parameter_group_name	= "default.memcached1.4"
 	
