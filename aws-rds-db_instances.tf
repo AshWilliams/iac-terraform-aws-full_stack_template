@@ -1,7 +1,7 @@
 resource "aws_db_instance" "mariadb" {
   count = "${var.aws_rds_cluster_mariadb_enabled}"
   
-  identifier  = "rds-mariadb-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+  identifier  = "rds-mariadb-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
   
   engine          = "mariadb"
   engine_version  = "10.0.24"
@@ -33,12 +33,12 @@ resource "aws_db_instance" "mariadb" {
   backup_retention_period = "7"
   
   tags {
-    Name          = "RDS-MariaDB-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+    Name          = "RDS-MariaDB-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
     Resource      = "MariaDB"
     ResourceGroup = "RDS"
-    Ecosystem     = "${var.project_ecosystem}"
-    Application   = "${var.project_webapplication}"
-    Environment   = "${var.project_environment}"
+    Ecosystem     = "${var.prj_ecosystem}"
+    Application   = "${var.prj_application}"
+    Environment   = "${var.prj_environment}"
   }
 }
 
