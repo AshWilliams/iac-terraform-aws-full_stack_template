@@ -1,6 +1,6 @@
-resource "aws_s3_bucket_policy" "prj-s3_bucket_policy-elb_logs" {
+resource "aws_s3_bucket_policy" "elb_logs" {
 
-	bucket = "${aws_s3_bucket.prj-s3_bucket-elb_logs.id}"
+	bucket = "${aws_s3_bucket.elb_logs.id}"
 	#(Required) The name of the bucket to which to apply the policy.
 	
 	#policy - (Required) The text of the policy.
@@ -14,7 +14,7 @@ resource "aws_s3_bucket_policy" "prj-s3_bucket_policy-elb_logs" {
         "s3:PutObject"
       ],
       "Effect": "Allow",
-      "Resource": "arn:aws:s3:::${aws_s3_bucket.prj-s3_bucket-elb_logs.id}/${var.project_environment}/AWSLogs/${data.aws_caller_identity.aws_account_id.account_id}/*",
+      "Resource": "arn:aws:s3:::${aws_s3_bucket.elb_logs.id}/${var.prj_environment}/AWSLogs/${data.aws_caller_identity.aws_account_id.account_id}/*",
       "Principal": {
         "AWS": [
           "${data.aws_elb_service_account.aws_elb_account_id.id}"
