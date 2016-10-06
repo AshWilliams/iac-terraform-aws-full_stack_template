@@ -1,7 +1,7 @@
 resource "aws_elasticsearch_domain" "es-cluster" {
   count = "${var.aws_elasticsearch_cluster_enabled}"
   
-  domain_name           = "es-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+  domain_name           = "es-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
   elasticsearch_version = "2.3"
   
   cluster_config {
