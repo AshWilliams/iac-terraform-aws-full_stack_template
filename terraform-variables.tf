@@ -69,6 +69,16 @@ variable "project_db_admin_password" {
 
 ##  Enable/Disable AWS Services  ##
 
+# AWS RDS - MariaDB Cluster
+variable "aws_rds_cluster_mariadb_enabled" {
+  default = 0
+}
+
+# AWS ElasticSearch Cluster
+variable "aws_elasticsearch_cluster_enabled" {
+  default = 0
+}
+
 # AWS ElastiCache - Redis Cluster
 variable "aws_elasticache_cluster_redis_enabled" {
   default = 0
