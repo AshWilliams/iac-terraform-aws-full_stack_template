@@ -66,3 +66,15 @@ variable "project_db_admin_username" {
 variable "project_db_admin_password" {
     description = "Password of the RDS Instance Administrator"
 }
+
+##  Enable/Disable AWS Services  ##
+
+# AWS ElastiCache - Redis Cluster
+variable "aws_elasticache_cluster_redis_enabled" {
+  default = 0
+}
+
+# AWS ElastiCache - Memcached Cluster
+variable "aws_elasticache_cluster_memcached_enabled" {
+  default = 0
+}
