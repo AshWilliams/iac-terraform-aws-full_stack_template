@@ -35,19 +35,19 @@ resource "aws_elasticsearch_domain" "es-cluster" {
       "Action": "es:*",
       "Principal": "*",
       "Effect": "Allow",
-      "Resource": "arn:aws:es:eu-west-1:${data.aws_caller_identity.aws_account_id.account_id}:domain/es-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}/*"
+      "Resource": "arn:aws:es:eu-west-1:${data.aws_caller_identity.aws_account_id.account_id}:domain/es-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}/*"
     }
   ]
 }
 CONFIG
 
   tags {
-    Domain        = "es-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+    Domain        = "es-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
     Resource      = "ElasticSearch"
     ResourceGroup = "AWS Services"
-    Ecosystem     = "${var.project_ecosystem}"
-    Application   = "${var.project_webapplication}"
-    Environment   = "${var.project_environment}"
+    Ecosystem     = "${var.prj_ecosystem}"
+    Application   = "${var.prj_application}"
+    Environment   = "${var.prj_environment}"
   }
 }
 
