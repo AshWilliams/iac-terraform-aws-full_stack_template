@@ -1,6 +1,6 @@
 resource "aws_elasticache_cluster" "redis" {
   count       = "${var.aws_elasticache_cluster_redis_enabled}"
-  cluster_id  = "r-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+  cluster_id  = "r-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
   
   engine                = "redis"
   engine_version        = "2.8.24"
@@ -15,7 +15,7 @@ resource "aws_elasticache_cluster" "redis" {
 
 resource "aws_elasticache_cluster" "memcached" {
   count       = "${var.aws_elasticache_cluster_memcached_enabled}"
-  cluster_id  = "m-${var.project_environment}-${var.project_ecosystem}-${var.project_webapplication}"
+  cluster_id  = "m-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
   engine                = "memcached"
   engine_version        = "1.4.24"
   parameter_group_name  = "default.memcached1.4"
