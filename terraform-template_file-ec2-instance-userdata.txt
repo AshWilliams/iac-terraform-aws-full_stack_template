@@ -14,13 +14,13 @@ cd ~/.aws/
 touch ~/.aws/credentials
 cat <<EOT >> ~/.aws/credentials
 [default]
-aws_access_key_id=${var.aws_access_key}
-aws_secret_access_key=${var.aws_secret_key}
+aws_access_key_id=${iamAccessKey}
+aws_secret_access_key=${iamSecretKey}
 EOT
 touch ~/.aws/config
 cat <<EOT >> ~/.aws/config
 [default]
-region=${var.aws_region}
+region=${activeRegion}
 output=json
 EOT
 
