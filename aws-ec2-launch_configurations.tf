@@ -12,4 +12,10 @@ resource "aws_launch_configuration" "node" {
   enable_monitoring = false
   
   security_groups = ["${aws_security_group.ec2-inst.id}", "${aws_security_group.ec2-instances-officeaccess.id}", "${aws_security_group.ec2-instances-remoteaccess.id}"]
+  
+  root_block_device {
+    volume_type           = "gp2"
+    volume_size           = "10"
+    delete_on_termination = true
+  }
 }
