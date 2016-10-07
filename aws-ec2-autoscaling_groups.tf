@@ -27,7 +27,7 @@ resource "aws_autoscaling_group" "asg" {
 	#force_delete
 	#(Optional) Allows deleting the autoscaling group without waiting for all instances in the pool to terminate. You can force an autoscaling group to delete even if it's in the process of scaling a resource. Normally, Terraform drains all the instances before deleting the group. This bypasses that behavior and potentially leaves resources dangling.
 	
-	#load_balancers
+	#load_balancers = ["${aws_elb.external.name}"]
 	#(Optional) A list of load balancer names to add to the autoscaling group names.
 	
 	#vpc_zone_identifier
