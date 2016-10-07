@@ -64,7 +64,7 @@ resource "aws_elb" "external" {
 	connection_draining_timeout = 90
 	#(Optional) The time in seconds to allow for connections to drain.
 
-  #security_groups = ["${aws_security_group.ec2-elb.id}"]
+  security_groups = ["${aws_security_group.ec2-elb.id}"]
   #(Optional) A list of security group IDs to assign to the ELB. Only valid if creating an ELB within a VPC
   
 	#access_logs - (Optional) An Access Logs block. Access Logs documented below.
