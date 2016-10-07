@@ -10,4 +10,6 @@ resource "aws_launch_configuration" "node" {
   user_data = "${template_file.node_userdata.rendered}"
   
   enable_monitoring = false
+  
+  security_groups = [${aws_security_group.ec2-inst.id}, ${aws_security_group.ec2-instances-officeaccess.id}, ${aws_security_group.ec2-instances-remoteaccess.id}]
 }

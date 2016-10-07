@@ -15,8 +15,8 @@ resource "aws_security_group" "ec2-inst" {
 	name		= "vpc-sg-ec2-inst-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
 	description	= "VPC Security Group controlling access to Project (${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}) EC2 Instances"
 	tags {
-		Name			= "VPC:SG-EC2:INST-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
-		Resource		= "Instance"
+		Name			= "VPC:SG-EC2:Inst-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
+		Resource		= "Instances"
 		ResourceGroup	= "EC2"
 		Ecosystem		= "${var.prj_ecosystem}"
 		Application		= "${var.prj_application}"
@@ -67,9 +67,35 @@ resource "aws_security_group" "rds-instances" {
 	name		= "vpc-sg-rds-inst-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
 	description	= "VPC Security Group controlling access to Project (${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}) RDS DB Instances"
 	tags {
-		Name			= "VPC:SG-RDS:inst-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
-		Resource		= "DB Instancea"
+		Name			= "VPC:SG-RDS:Inst-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
+		Resource		= "DB Instances"
 		ResourceGroup	= "RDS - Relational Database Service"
+		Ecosystem		= "${var.prj_ecosystem}"
+		Application		= "${var.prj_application}"
+		Environment		= "${var.prj_environment}"
+	}
+}
+
+resource "aws_security_group" "ec2-instances-officeaccess" {
+	name		= "vpc-sg-ec2-inst-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}-office-acc"
+	description	= "VPC Security Group controlling Office Access to Project (${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}) EC2 Instances"
+	tags {
+		Name			= "VPC:SG-EC2:Inst-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}-office-acc"
+		Resource		= "Instances"
+		ResourceGroup	= "EC2"
+		Ecosystem		= "${var.prj_ecosystem}"
+		Application		= "${var.prj_application}"
+		Environment		= "${var.prj_environment}"
+	}
+}
+
+resource "aws_security_group" "ec2-instances-remoteaccess" {
+	name		= "vpc-sg-ec2-inst-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}-rm-acc"
+	description	= "VPC Security Group controlling Remote Access to Project (${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}) EC2 Instances"
+	tags {
+		Name			= "VPC:SG-EC2:Inst-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}-rm-acc"
+		Resource		= "Instances"
+		ResourceGroup	= "EC2"
 		Ecosystem		= "${var.prj_ecosystem}"
 		Application		= "${var.prj_application}"
 		Environment		= "${var.prj_environment}"
