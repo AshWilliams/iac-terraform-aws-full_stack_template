@@ -1,40 +1,137 @@
-#!/bin/bash -v
+#!/bin/bash
 
 yum clean all
-yum -y update
+yum update -y
 
-rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+yum install -y epel-release
+yum install -y wget
+yum install -y ruby
+yum install -y python-pip
 
-yum -y install yum-priorities
-sed -i "7i priority=10" /etc/yum.repos.d/epel.repo
+cd /
+mkdir -p ~/.aws/
+cd ~/.aws/
+touch ~/.aws/credentials
+cat <<EOT >> ~/.aws/credentials
+[default]
+aws_access_key_id=${var.aws_access_key}
+aws_secret_access_key=${var.aws_secret_key}
+EOT
+touch ~/.aws/config
+cat <<EOT >> ~/.aws/config
+[default]
+region=${var.aws_region}
+output=json
+EOT
 
-yum -y update
 
-yum -y groupinstall 'Development Tools'
+cd /
+mkdir -p /aws.services/.aws/
+cd /aws.services/.aws/
+echo YOUR_AWS_ACCESS_KEY_HERE:YOUR_AWS_SECRET_KEY_HERE > /aws.services/.aws/.credentials
+chmod 600 /aws.services/.aws/.credentials
 
-touch /etc/sysconfig/clock
-echo "ZONE=\"Europe/London\"" >> /etc/sysconfig/clock
-ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
 
-yum -y install ntp
-systemctl enable ntpd.service
-systemctl start ntpd.service
+cd /
+mkdir -p /aws.services/cloudwatch/
+cd /aws.services/cloudwatch/
+touch awslogs.conf
+cat <<EOT >> /aws.services/cloudwatch/awslogs.conf
+[general]
+state_file = /var/awslogs/state/agent-state
+## Your config file would have a lot more with the logs that you want to monitor and send to Cloudwatch
+EOT
+wget https://s3.amazonaws.com/aws-cloudwatch/downloads/latest/awslogs-agent-setup.py
+chmod +x ./awslogs-agent-setup.py
+python ./awslogs-agent-setup.py --region eu-west-1 --non-interactive --configfile=/aws.services/cloudwatch/awslogs.conf
 
-yes | cp -f /etc/ntp.conf /etc/ntp.conf.original
-sed -i -e 's/0.centos.pool.ntp.org/time1.google.com/g' /etc/ntp.conf
-sed -i -e 's/1.centos.pool.ntp.org/time2.google.com/g' /etc/ntp.conf
-sed -i -e 's/2.centos.pool.ntp.org/time3.google.com/g' /etc/ntp.conf
-sed -i -e 's/3.centos.pool.ntp.org/time4.google.com/g' /etc/ntp.conf
-systemctl restart ntpd.service
+cd /
+mkdir -p /var/awslogs/etc/config/
+cd /var/awslogs/etc/config/
+touch /var/awslogs/etc/config/AWS.EC2-Instance.logs.conf
+cat <<EOT >> /var/awslogs/etc/config/AWS.EC2-Instance.logs.conf
+[AWS.EC2-Instance.Initialization.logs]
+datetime_format = %Y-%m-%d %H:%M:%S
+file = /var/log/cloud-init.log
+log_stream_name = {instance_id}
+log_group_name = AWS.EC2-Instance.Initialization.logs
+[AWS.EC2-Instance.InitializationConsole.logs]
+datetime_format = %Y-%m-%d %H:%M:%S
+file = /var/log/cloud-init-output.log
+log_stream_name = {instance_id}
+log_group_name = AWS.EC2-Instance.InitializationConsole.logs
+[AWS.EC2-Instance.Messages.logs]
+datetime_format = %Y-%m-%d %H:%M:%S
+file = /var/log/messages
+log_stream_name = {instance_id}
+log_group_name = AWS.EC2-Instance.Messages.logs
+EOT
+touch /var/awslogs/etc/config/AWS-Cloudwatch.logs.conf
+cat <<EOT >> /var/awslogs/etc/config/AWS-Cloudwatch.logs.conf
+[AWS.Cloudwatch-Agent.logs]
+datetime_format = %Y-%m-%d %H:%M:%S
+file = /var/log/awslogs.log
+log_stream_name = {instance_id}
+log_group_name = AWS.Cloudwatch-Agent.logs
+[AWS.Cloudwatch-AgentInstallation.logs]
+datetime_format = %Y-%m-%d %H:%M:%S
+file = /var/log/awslogs-agent-setup.log
+log_stream_name = {instance_id}
+log_group_name = AWS.Cloudwatch-AgentInstallation.logs
+EOT
+touch /var/awslogs/etc/config/AWS-CodeDeploy.logs.conf
+cat <<EOT >> /var/awslogs/etc/config/AWS-CodeDeploy.logs.conf
+[AWS.CodeDeploy-Agent.logs]
+datetime_format = %Y-%m-%d %H:%M:%S
+file = /var/log/aws/codedeploy-agent/codedeploy-agent.log
+log_stream_name = {instance_id}
+log_group_name = AWS.CodeDeploy-Agent.logs
+[AWS.CodeDeploy-Updater.logs]
+file = /tmp/codedeploy-agent.update.log
+log_stream_name = {instance_id}
+log_group_name = AWS.CodeDeploy-Updater.logs
+[AWS.CodeDeploy-Deployment.logs]
+file = /opt/codedeploy-agent/deployment-root/deployment-logs/codedeploy-agent-deployments.log
+log_stream_name = {instance_id}
+log_group_name = AWS.CodeDeploy-Deployments.logs
+EOT
+touch /var/awslogs/etc/config/AWS-SSM.logs.conf
+cat <<EOT >> /var/awslogs/etc/config/AWS-SSM.logs.conf
+[AWS.SSM-Agent.logs]
+datetime_format = %Y-%m-%d %H:%M:%S
+file = /var/log/amazon/ssm/amazon-ssm-agent.log
+log_stream_name = {instance_id}
+log_group_name = AWS.SSM-Agent.logs
+EOT
+systemctl enable awslogs.service
+systemctl start awslogs.service
+systemctl restart awslogs.service
 
-dd if=/dev/zero of=/mnt/.swapfile bs=1M count=1024
-chown root:root /mnt/.swapfile
-chmod 600 /mnt/.swapfile
 
-mkswap /mnt/.swapfile
-swapon /mnt/.swapfile
-sh -c 'echo "/mnt/.swapfile swap swap defaults 0 0" >> /etc/fstab'
-swapon -a
+cd /
+mkdir -p /aws.services/cli/
+cd /aws.services/cli/
+pip install awscli
 
-sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
-setenforce 0
+
+cd /
+mkdir -p /aws.services/ssm/
+cd /aws.services/ssm/
+curl https://amazon-ssm-eu-west-1.s3.amazonaws.com/latest/linux_amd64/amazon-ssm-agent.rpm -o amazon-ssm-agent.rpm
+yum install -y amazon-ssm-agent.rpm
+systemctl enable amazon-ssm-agent.service
+systemctl start amazon-ssm-agent.service
+systemctl restart amazon-ssm-agent.service
+
+
+cd /
+mkdir -p /aws.services/codedeploy/
+cd /aws.services/codedeploy/
+wget https://aws-codedeploy-eu-west-1.s3.amazonaws.com/latest/install
+chmod +x ./install
+./install auto
+systemctl enable codedeploy-agent
+systemctl start codedeploy-agent
+systemctl restart codedeploy-agent
+
+cd /
