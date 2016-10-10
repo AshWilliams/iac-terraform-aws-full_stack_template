@@ -23,5 +23,35 @@ resource "aws_iam_user_policy" "prj-iam_cuplc" {
   ]
 }
 EOF
+}
+
+resource "aws_iam_user_policy" "prj-iam-cup-dtcd" {
+  name = "iam-cup-dtcd-${var.prj_ecosystem}-${var.prj_application}-${var.prj_environment}"
+  user = "${aws_iam_user.prj_user.name}"
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "autoscaling:CompleteLifecycleAction",
+        "autoscaling:DeleteLifecycleHook",
+        "autoscaling:DescribeAutoScalingGroups",
+        "autoscaling:DescribeLifecycleHooks",
+        "autoscaling:PutLifecycleHook",
+        "autoscaling:RecordLifecycleActionHeartbeat",
+        "ec2:DescribeInstances",
+        "ec2:DescribeInstanceStatus",
+        "tag:GetTags",
+        "tag:GetResources",
+        "sns:Publish",
+        "cloudwatch:DescribeAlarms"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+EOF
 
 }
