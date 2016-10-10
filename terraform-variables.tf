@@ -1,3 +1,7 @@
+  variable "atlas_token" {
+    description = "Name of the Project for which the Infrastructure is about | (Example: GEMv2.GLM.app || HTTP || PROD)"
+  }
+
 ##  Project's Information  ##
 
   variable "project_name" {
