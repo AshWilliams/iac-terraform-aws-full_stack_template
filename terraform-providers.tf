@@ -3,3 +3,8 @@ provider "aws" {
   secret_key = "${var.aws_secret_key}"
   region     = "${var.aws_region}"
 }
+
+# Configure the Atlas Provider
+provider "atlas" {
+  token = "${var.atlas_token}"
+}
