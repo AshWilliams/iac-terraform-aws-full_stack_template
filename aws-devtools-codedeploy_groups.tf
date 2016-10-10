@@ -5,7 +5,7 @@ resource "aws_codedeploy_deployment_group" "foo" {
   deployment_group_name = "devtools-cdgrp-${var.prj_ecosystem}-${var.prj_application}-${var.prj_environment}"
   #(Required) The name of the deployment group.
   
-  service_role_arn = "${aws_iam_role.foo_role.arn}"
+  service_role_arn = "${aws_iam_role.codedeploy.arn}"
   #(Required) The service role ARN that allows deployments.
   
   autoscaling_groups = ["${aws_autoscaling_group.asg.id}"]
