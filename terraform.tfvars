@@ -1,4 +1,4 @@
-## Static Variables ##
+## Static Variables | Template ##
 
 ##  Project's Information  ##
 
