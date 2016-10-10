@@ -1,3 +1,5 @@
+## Static Variables ##
+
 ##  Project's Information  ##
 
 project_name = "gsite"
