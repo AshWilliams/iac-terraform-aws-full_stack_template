@@ -1,4 +1,3 @@
-/*
 resource "aws_iam_role_policy" "codedeploy" {
   name = "iam-rolepolicy-dtcd-${var.prj_ecosystem}-${var.prj_application}-${var.prj_environment}"
   role = "${aws_iam_role.codedeploy.id}"
@@ -28,4 +27,3 @@ resource "aws_iam_role_policy" "codedeploy" {
 }
 EOF
 }
-*/
