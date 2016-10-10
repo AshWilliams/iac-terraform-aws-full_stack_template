@@ -19,16 +19,16 @@ prj_environment = "genv"
 ##  Enable/Disable AWS Services  ##
 
 # AWS RDS - MariaDB Cluster
-aws_rds_cluster_mariadb_enabled = 0
+aws_rds_cluster_mariadb_enabled = "0"
 
 # AWS ElasticSearch Cluster
-aws_elasticsearch_cluster_enabled = 0
+aws_elasticsearch_cluster_enabled = "0"
 
 # AWS ElastiCache - Redis Cluster
-aws_elasticache_cluster_redis_enabled = 0
+aws_elasticache_cluster_redis_enabled = "0"
 
 # AWS ElastiCache - Memcached Cluster
-aws_elasticache_cluster_memcached_enabled = 0
+aws_elasticache_cluster_memcached_enabled = "0"
  
 ##  EC2 | Instances Parameters  ##
 
