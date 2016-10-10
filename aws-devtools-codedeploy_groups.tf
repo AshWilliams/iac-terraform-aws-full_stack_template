@@ -8,7 +8,7 @@ resource "aws_codedeploy_deployment_group" "foo" {
   service_role_arn = "${aws_iam_role.codedeploy.arn}"
   #(Required) The service role ARN that allows deployments.
   
-  autoscaling_groups = ["${aws_autoscaling_group.asg.id}"]
+  autoscaling_groups = ["${aws_autoscaling_group.asg.name}"]
   #(Optional) Autoscaling groups associated with the deployment group.
   
   #deployment_config_name
