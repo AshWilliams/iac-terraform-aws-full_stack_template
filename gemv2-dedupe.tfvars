@@ -29,7 +29,7 @@
 ##  Route 53  ##
 
   # Create a Public Domain (Zone)?
-  # IF YES set Value  = 0
+  # IF YES set Value  = 1
   aws_r53_zone_pub"   = 0
   
     # Name of the Public Domain (Zone)
