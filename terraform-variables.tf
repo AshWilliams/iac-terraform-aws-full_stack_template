@@ -20,6 +20,26 @@
     description = "On which Environment will the Web Application be launched | [Valid Values: prod | beta | stg]"
   }
 
+##  Route 53  ##
+
+  # Is this a Private Domain (Zone)?
+  # IF YES set Value = 1
+  variable "aws_r53_zone_prv" {
+    default = 0
+    description = "Is this a Private Domain (Zone)? IF {YES} then the Value MUST be set = 1"
+  }
+
+  # Name of the Domain (Zone)
+  variable "aws_r53_zone_name" {
+    description = "Please provide then Name of the Domain (Zone)"
+  }
+
+  # A Comment for the Domain (Zone)
+  variable "aws_r53_zone_comment" {
+    description = "Please provide a comment (small description) about the Domain (Zone)"
+  }
+
+
 
 ##  Enable/Disable AWS Services  ##
 
