@@ -30,7 +30,7 @@
 
   # Create a Public Domain (Zone)?
   # IF YES set Value  = 1
-  aws_r53_zone_pub   = 0
+  aws_r53_zone_pub   = "0"
   
     # Name of the Public Domain (Zone)
     aws_r53_zone_pub_name = "domain.tld"
@@ -40,7 +40,7 @@
   
   # Create a Private Domain (Zone)?
   # IF YES set Value  = 1
-  aws_r53_zone_prv    = 1
+  aws_r53_zone_prv    = "1"
   
     # Name of the Private Domain (Zone)
     aws_r53_zone_prv_name = "gemv2-dedupe.app"
@@ -54,16 +54,16 @@
 # To disable a service set value to (0)
 
   # AWS RDS - MariaDB Cluster
-  aws_rds_cluster_mariadb_enabled             = 0
+  aws_rds_cluster_mariadb_enabled             = "0"
 
   # AWS ElasticSearch Cluster
-  aws_elasticsearch_cluster_enabled           = 1
+  aws_elasticsearch_cluster_enabled           = "1"
 
   # AWS ElastiCache - Redis Cluster
-  aws_elasticache_cluster_redis_enabled       = 1
+  aws_elasticache_cluster_redis_enabled       = "1"
 
   # AWS ElastiCache - Memcached Cluster
-  aws_elasticache_cluster_memcached_enabled   = 0
+  aws_elasticache_cluster_memcached_enabled   = "0"
 
 
 ##  EC2 | Instances Parameters  ##
@@ -83,21 +83,21 @@
 
   # Group Minimum Size
   # The minimum number of Instances available on any given point of time
-  asg_min_instances   = 3
+  asg_min_instances   = "3"
   
   # Group Maximum Size
   # The maximum number of Instances available on any given point of time
-  asg_max_instances   = 9
+  asg_max_instances   = "9"
   
   # Group Desired Size
   # The desire number of Instances available on any given point of time
-  asg_des_instances   = 3
+  asg_des_instances   = "3"
 
 
 
 #####  Others  #####
 
-  ec2_instance-root_volume_size = 10
+  ec2_instance-root_volume_size = "10"
   # Size (in GB) of the Root Volume for the EC2 Instances
 
   project_db_name = "db-name"
