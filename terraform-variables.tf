@@ -31,11 +31,13 @@
 
   # Name of the Domain (Zone)
   variable "aws_r53_zone_name" {
+    default = "noname.tld"
     description = "Please provide then Name of the Domain (Zone)"
   }
 
   # A Comment for the Domain (Zone)
   variable "aws_r53_zone_comment" {
+    default = "NoName.tld is just a placeholder.."
     description = "Please provide a comment (small description) about the Domain (Zone)"
   }
 
@@ -83,6 +85,7 @@
 ##  EC2 | Instances Parameters  ##
 
   variable "ec2_instance_type" {
+    default = "t2.micro"
     description = "The type of the EC2 Instances"
   }
 
@@ -97,33 +100,38 @@
 ##  EC2 | Auto Scaling Parameters  ##
 
   variable "asg_min_instances" {
+    default = 0
     description = "The minimum number of Instances available on any given point of time"
   }
   
   variable "asg_max_instances" {
+    default = 0
     description = "The maximum number of Instances available on any given point of time"
   }
   
   variable "asg_des_instances" {
+    default = 0
     description = "The desire number of Instances available on any given point of time"
   }
 
+##### Others..  #####
 
-variable "ec2_instance-root_volume_size" {
-  description = "Size (in GB) of the Root Volume for the EC2 Instances"
-  default = 10
-}
+  variable "ec2_instance-root_volume_size" {
+    default = 10
+    description = "Size (in GB) of the Root Volume for the EC2 Instances"
+  }
 
-
-variable "project_db_name" {
+  variable "project_db_name" {
+    default = "db_name"
     description = "Name of the Project's main Database that will be created on the RDS Instance"
-}
+  }
 
-variable "project_db_admin_username" {
+  variable "project_db_admin_username" {
+    default = "db_admin"
     description = "Username of the RDS Instance Administrator"
-}
+  }
 
-variable "project_db_admin_password" {
+  variable "project_db_admin_password" {
+    default = "db_admin_pass"
     description = "Password of the RDS Instance Administrator"
-}
-
+  }
