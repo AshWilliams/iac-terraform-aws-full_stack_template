@@ -22,11 +22,18 @@
 
 ##  Route 53  ##
 
-  # Is this a Private Domain (Zone)?
+  # Create a Public Domain (Zone)?
+  # IF YES set Value = 1
+  variable "aws_r53_zone_pub" {
+    default = 0
+    description = "Create a Public Domain (Zone)? IF {YES} then the Value MUST be set = 1"
+  }
+
+  # Create a Private Domain (Zone)?
   # IF YES set Value = 1
   variable "aws_r53_zone_prv" {
     default = 0
-    description = "Is this a Private Domain (Zone)? IF {YES} then the Value MUST be set = 1"
+    description = "Create a Private Domain (Zone)? IF {YES} then the Value MUST be set = 1"
   }
 
   # Name of the Domain (Zone)
