@@ -31,4 +31,4 @@ resource "aws_route53_zone" "domain_pub" {
   force_destroy = "true"
   #(Optional) Whether to destroy all records (possibly managed outside of Terraform) in the zone when destroying the zone.
 }
-/*
+*/
