@@ -1,62 +1,79 @@
-###################################
-##  Static Variables - Template  ##
-###################################
+############################
+##  Predefined Variables  ##
+############################
 
 ##  Project's Information  ##
 
-  project_name = "gsite"
-  # Name of the Project for which the Infrastructure is about | (Example: GEMv2.GLM.app || HTTP || PROD)
-
-  prj_ecosystem = "geco"
-  # Name of the Ecosystem, the Web Application is part of | [Valid Values: gemv1 / gemv2]
-
-  prj_application = "gapp"
-  # Name of the Web Application | (Example: glm-app) | Alphanumeric characters, hyphens (-), and underscores (_) are allowed.
-
-  prj_interface = "giface"
-  # Which interface will the Web Application be used through | [Valid Values: http / cli]
-
-  prj_environment = "genv"
-  # On which Environment will the Web Application be launched | [Valid Values: prod | beta | stg]
+  # Name of the Project
+  # Example:      GEMv2.GLM.app || HTTP || PROD
+  project_name    = ""
+  
+  # Name of the Ecosystem
+  # Valid Values: gemv1 / gemv2
+  prj_ecosystem   = ""
+  
+  # Name of the Web Application
+  # Example:      glm-app
+  # Restrictions: Alphanumeric characters, hyphens (-), and underscores (_) are allowed.
+  prj_application = ""
+  
+  # Interface
+  # Valid Values: http / cli
+  prj_interface   = ""
+  
+  # Environment
+  # Valid Values: prod / beta / stg
+  prj_environment = ""
+  
 
 
 ##  Enable/Disable AWS Services  ##
+# To enable a service set value to  (1)
+# To disable a service set value to (0)
 
   # AWS RDS - MariaDB Cluster
-  aws_rds_cluster_mariadb_enabled = "0"
+  aws_rds_cluster_mariadb_enabled             = "0"
 
   # AWS ElasticSearch Cluster
-  aws_elasticsearch_cluster_enabled = "0"
+  aws_elasticsearch_cluster_enabled           = "0"
 
   # AWS ElastiCache - Redis Cluster
-  aws_elasticache_cluster_redis_enabled = "0"
+  aws_elasticache_cluster_redis_enabled       = "0"
 
   # AWS ElastiCache - Memcached Cluster
-  aws_elasticache_cluster_memcached_enabled = "0"
- 
+  aws_elasticache_cluster_memcached_enabled   = "0"
+
+
 ##  EC2 | Instances Parameters  ##
 
+  # EC2 Instance Type
   ec2_instance_type = "t2.micro"
-  # The type of the EC2 Instances
+
 
 ##  EC2 | Network & Security Parameters  ##
 
+  # SSH Public Key for accessing EC2 Instances
+  # (Example: ssh-rsa AAABBBCCC999... email@example.com)
   ssh_keypair_public = ""
-  # SSH Public Key that will be used to access the EC2 Instances (Example: ssh-rsa AAABBBCCC999... email@example.com)
+  
 
 ##  EC2 | Auto Scaling Parameters  ##
 
-  asg_min_instances = "3"
+  # Group Minimum Size
   # The minimum number of Instances available on any given point of time
+  asg_min_instances   = "3"
   
-  asg_max_instances = "9"
+  # Group Maximum Size
   # The maximum number of Instances available on any given point of time
+  asg_max_instances   = "9"
   
-  asg_des_instances = "3"
+  # Group Desired Size
   # The desire number of Instances available on any given point of time
+  asg_des_instances   = "3"
 
 
-## Others ##
+
+#####  Others  #####
 
   ec2_instance-root_volume_size = "10"
   # Size (in GB) of the Root Volume for the EC2 Instances
