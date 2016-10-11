@@ -33,6 +33,35 @@ chmod 600 /aws.services/.aws/.credentials
 
 
 cd /
+mkdir -p /aws.services/cli/
+cd /aws.services/cli/
+pip install awscli
+
+
+cd /
+mkdir -p /aws.services/ssm/
+cd /aws.services/ssm/
+curl https://amazon-ssm-eu-west-1.s3.amazonaws.com/latest/linux_amd64/amazon-ssm-agent.rpm -o amazon-ssm-agent.rpm
+yum install -y amazon-ssm-agent.rpm
+systemctl enable amazon-ssm-agent.service
+systemctl start amazon-ssm-agent.service
+systemctl restart amazon-ssm-agent.service
+systemctl status amazon-ssm-agent.service -l
+
+
+cd /
+mkdir -p /aws.services/codedeploy/
+cd /aws.services/codedeploy/
+wget https://aws-codedeploy-eu-west-1.s3.amazonaws.com/latest/install
+chmod +x ./install
+./install auto
+systemctl enable codedeploy-agent
+systemctl start codedeploy-agent
+systemctl restart codedeploy-agent
+systemctl status codedeploy-agent -l
+
+
+cd /
 mkdir -p /aws.services/cloudwatch/
 cd /aws.services/cloudwatch/
 touch awslogs.conf
@@ -106,32 +135,8 @@ EOT
 systemctl enable awslogs.service
 systemctl start awslogs.service
 systemctl restart awslogs.service
-
-
-cd /
-mkdir -p /aws.services/cli/
-cd /aws.services/cli/
-pip install awscli
-
+systemctl status awslogs.service -l
 
 cd /
-mkdir -p /aws.services/ssm/
-cd /aws.services/ssm/
-curl https://amazon-ssm-eu-west-1.s3.amazonaws.com/latest/linux_amd64/amazon-ssm-agent.rpm -o amazon-ssm-agent.rpm
-yum install -y amazon-ssm-agent.rpm
-systemctl enable amazon-ssm-agent.service
-systemctl start amazon-ssm-agent.service
-systemctl restart amazon-ssm-agent.service
 
-
-cd /
-mkdir -p /aws.services/codedeploy/
-cd /aws.services/codedeploy/
-wget https://aws-codedeploy-eu-west-1.s3.amazonaws.com/latest/install
-chmod +x ./install
-./install auto
-systemctl enable codedeploy-agent
-systemctl start codedeploy-agent
-systemctl restart codedeploy-agent
-
-cd /
+yum install -y git
