@@ -15,7 +15,7 @@
   # Name of the Web Application
   # Example:      glm-app
   # Restrictions: Alphanumeric characters, hyphens (-), and underscores (_) are allowed.
-  prj_application = "dedupe-app"
+  prj_application = "dedupe"
   
   # Interface
   # Valid Values: http / cli
