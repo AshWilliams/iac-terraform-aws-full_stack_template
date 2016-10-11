@@ -46,7 +46,7 @@
     aws_r53_zone_prv_name = "gemv2-dedupe.app"
 
     # A Comment for the Domain (Zone)
-    aws_r53_zone_prv_comment = "EcoSystem GEMv2, WebApplication DeDupe"
+    aws_r53_zone_prv_comment = "EcoSystem GEMv2 WebApplication DeDupe"
 
 
 ##  Enable/Disable AWS Services  ##
