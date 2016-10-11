@@ -34,6 +34,15 @@ resource "aws_security_group_rule" "ec2-inst-egress-elb-port-80" {
 	to_port						= "80"
 }
 
+resource "aws_security_group_rule" "ec2-inst-egress-port-80" {
+	security_group_id			= "${aws_security_group.ec2-inst.id}"
+	type						= "egress"
+	protocol					= "tcp"
+	cidr_blocks			= ["0.0.0.0/0"]
+	from_port					= "80"
+	to_port						= "80"
+}
+
 resource "aws_security_group_rule" "elcache-memc-ingress-port-11211" {
 	security_group_id			= "${aws_security_group.elcache-memcached.id}"
 	type						= "ingress"
