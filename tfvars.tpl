@@ -1,4 +1,3 @@
-/*
 ###################################
 ##  Static Variables - Template  ##
 ###################################
@@ -70,5 +69,3 @@
 
   project_db_admin_password = ""
   # Password of the RDS Instance Administrator
-
-*/
