@@ -29,6 +29,18 @@
     description = "Create a Public Domain (Zone)? IF {YES} then the Value MUST be set = 1"
   }
 
+    # Name of the Domain (Zone)
+    variable "aws_r53_zone_pub_name" {
+      default = "noname.tld"
+      description = "Please provide then Name of the Public Domain (Zone)"
+    }
+
+    # A Comment for the Public Domain (Zone)
+    variable "aws_r53_zone_pub_comment" {
+      default = "NoName.tld is just a placeholder.."
+      description = "Please provide a comment (small description) about the Public Domain (Zone)"
+    }
+
   # Create a Private Domain (Zone)?
   # IF YES set Value = 1
   variable "aws_r53_zone_prv" {
@@ -36,17 +48,17 @@
     description = "Create a Private Domain (Zone)? IF {YES} then the Value MUST be set = 1"
   }
 
-  # Name of the Domain (Zone)
-  variable "aws_r53_zone_name" {
-    default = "noname.tld"
-    description = "Please provide then Name of the Domain (Zone)"
-  }
+    # Name of the Private Domain (Zone)
+    variable "aws_r53_zone_prv_name" {
+      default = "noname.tld"
+      description = "Please provide then Name of the Private Domain (Zone)"
+    }
 
-  # A Comment for the Domain (Zone)
-  variable "aws_r53_zone_comment" {
-    default = "NoName.tld is just a placeholder.."
-    description = "Please provide a comment (small description) about the Domain (Zone)"
-  }
+    # A Comment for the Private Domain (Zone)
+    variable "aws_r53_zone_prv_comment" {
+      default = "NoName.tld is just a placeholder.."
+      description = "Please provide a comment (small description) about the Private Domain (Zone)"
+    }
 
 
 
