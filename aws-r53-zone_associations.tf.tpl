@@ -1,4 +1,3 @@
-/*
 resource "aws_vpc" "primary" {
   cidr_block = "10.6.0.0/16"
   enable_dns_hostnames = true
@@ -20,4 +19,3 @@ resource "aws_route53_zone_association" "secondary" {
   zone_id = "${aws_route53_zone.example.zone_id}"
   vpc_id = "${aws_vpc.secondary.id}"
 }
-*/
