@@ -32,21 +32,21 @@
   # IF YES set Value  = 1
   aws_r53_zone_pub   = "0"
   
-    # Name of the Public Domain (Zone)
-    aws_r53_zone_pub_name = "domain.tld"
+  # Name of the Public Domain (Zone)
+  aws_r53_zone_pub_name = "domain.tld"
 
-    # A Comment for the Public Domain (Zone)
-    aws_r53_zone_pub_comment = "This is just a placeholder.."
+  # A Comment for the Public Domain (Zone)
+  aws_r53_zone_pub_comment = "This is just a placeholder.."
   
   # Create a Private Domain (Zone)?
   # IF YES set Value  = 1
   aws_r53_zone_prv    = "1"
   
-    # Name of the Private Domain (Zone)
-    aws_r53_zone_prv_name = "gemv2-dedupe.app"
+  # Name of the Private Domain (Zone)
+  aws_r53_zone_prv_name = "gemv2-dedupe.app"
 
-    # A Comment for the Domain (Zone)
-    aws_r53_zone_prv_comment = "EcoSystem GEMv2 WebApplication DeDupe"
+  # A Comment for the Domain (Zone)
+  aws_r53_zone_prv_comment = "EcoSystem GEMv2 WebApplication DeDupe"
 
 
 ##  Enable/Disable AWS Services  ##
