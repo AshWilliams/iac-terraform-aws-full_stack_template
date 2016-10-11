@@ -26,6 +26,28 @@
   prj_environment = ""
   
 
+##  Route 53  ##
+
+  # Create a Public Domain (Zone)?
+  # IF YES set Value  = 1
+  aws_r53_zone_pub"   = 1
+  
+    # Name of the Public Domain (Zone)
+    aws_r53_zone_pub_name = "domain.tld"
+
+    # A Comment for the Public Domain (Zone)
+    aws_r53_zone_pub_comment = "This is just a placeholder.."
+  
+  # Create a Private Domain (Zone)?
+  # IF YES set Value  = 1
+  aws_r53_zone_prv    = 1
+  
+    # Name of the Private Domain (Zone)
+    aws_r53_zone_prv_name = "domain.int"
+
+    # A Comment for the Domain (Zone)
+    aws_r53_zone_prv_comment = "This is just a placeholder.."
+
 
 ##  Enable/Disable AWS Services  ##
 # To enable a service set value to  (1)
