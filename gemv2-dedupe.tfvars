@@ -6,24 +6,24 @@
 
   # Name of the Project
   # Example:      GEMv2.GLM.app || HTTP || PROD
-  project_name    = ""
+  project_name    = "GEMv2.DeDupe.app |HTTP|PROD"
   
   # Name of the Ecosystem
   # Valid Values: gemv1 / gemv2
-  prj_ecosystem   = ""
+  prj_ecosystem   = "gemv2"
   
   # Name of the Web Application
   # Example:      glm-app
   # Restrictions: Alphanumeric characters, hyphens (-), and underscores (_) are allowed.
-  prj_application = ""
+  prj_application = "dedupe-app"
   
   # Interface
   # Valid Values: http / cli
-  prj_interface   = ""
+  prj_interface   = "http"
   
   # Environment
   # Valid Values: prod / beta / stg
-  prj_environment = ""
+  prj_environment = "stg"
   
 
 
@@ -35,10 +35,10 @@
   aws_rds_cluster_mariadb_enabled             = "0"
 
   # AWS ElasticSearch Cluster
-  aws_elasticsearch_cluster_enabled           = "0"
+  aws_elasticsearch_cluster_enabled           = "1"
 
   # AWS ElastiCache - Redis Cluster
-  aws_elasticache_cluster_redis_enabled       = "0"
+  aws_elasticache_cluster_redis_enabled       = "1"
 
   # AWS ElastiCache - Memcached Cluster
   aws_elasticache_cluster_memcached_enabled   = "0"
@@ -54,7 +54,7 @@
 
   # SSH Public Key for accessing EC2 Instances
   # (Example: ssh-rsa AAABBBCCC999... email@example.com)
-  ssh_keypair_public = ""
+  ssh_keypair_public = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC2zbh0X0ooZlRugAQrQC350ZW7JkZ6A6jJp5BM3BIx4RyK5i1Lm2Cgg8lW7AgnqyqzSym+s1F0hzuw1NuFGD8FLuTyOFzEkLDIxbk7A6M5GTpEZZC3cXrwC1Hw3WKU9aUjSw1kC1wDvWveVHuy11mSKae9GcsarbNF6WcSrGPukibobJ0f2MKZiXZU0ZVla0s7IUlMZvN9X9x6JiT3UiqKlanAh+F31AbNNk6E8GtAiEakVUBOqRE9EEjzyKZu5Jd3zQRn1ghOu2Lo3ksSBV3WswFtOgg6JdaBG5+4engdsttmD16EKfDKZG2zW1DZaKNSJJV5NL1ZWOE7N5cBFhCX gfisaris@bridgemanimages.com"
   
 
 ##  EC2 | Auto Scaling Parameters  ##
@@ -78,11 +78,11 @@
   ec2_instance-root_volume_size = "10"
   # Size (in GB) of the Root Volume for the EC2 Instances
 
-  project_db_name = "g-db-name"
+  project_db_name = "db-name"
   # Name of the Project's main Database that will be created on the RDS Instance
   
-  project_db_admin_username = "g-db-admin"
+  project_db_admin_username = "db-admin"
   # Username of the RDS Instance Administrator
 
-  project_db_admin_password = ""
+  project_db_admin_password = "db-admin-pass"
   # Password of the RDS Instance Administrator
