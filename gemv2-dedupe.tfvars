@@ -30,7 +30,7 @@
 
   # Create a Public Domain (Zone)?
   # IF YES set Value  = 1
-  aws_r53_zone_pub   = 0
+  aws_r53_zone_pub   = "0"
   
   # Name of the Public Domain (Zone)
   aws_r53_zone_pub_name = "domain.tld"
@@ -40,7 +40,7 @@
   
   # Create a Private Domain (Zone)?
   # IF YES set Value  = 1
-  aws_r53_zone_prv    = 1
+  aws_r53_zone_prv    = "1"
   
   # Name of the Private Domain (Zone)
   aws_r53_zone_prv_name = "gemv2-dedupe.app"
