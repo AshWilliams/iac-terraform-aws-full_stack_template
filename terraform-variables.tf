@@ -22,28 +22,93 @@
 
 ##  VPC ##
 
-  variable "aws_vpc_pub_enabled" {
-    description = "Create a Public VPC? IF {YES} then SET this Value to 1"
+  ##  Public VPC  ##
+    variable "aws_vpc_pub_enabled" {
+      default     = "0"
+      description = "Create a Public VPC? IF {YES} then SET this Value to 1"
+      }
+
+    variable "aws_vpc_pub_cidr_block" {
+      default     = "192.168.0.0/22"
+      description = "Internal IP Range of the Public VPC (Example: 192.168.0.0/22)"
+      }
+
+    variable "aws_vpc_pub_enable_dns_support" {
+      default     = "true"
+      description = "A boolean flag to enable/disable DNS support in the VPC | true OR false"
+      }
+
+    variable "aws_vpc_pub_enable_dns_hostnames" {
+      default     = "true"
+      description = "A boolean flag to enable/disable DNS Hostnames support in the VPC | true OR false"
+      }
+
+    variable "aws_vpc_pub_enable_classiclink" {
+      default     = "false"
+      description = "A boolean flag to enable/disable ClassicLink support in the VPC | true OR false"
+      }
+
+  ##  Private VPC  ##
+    variable "aws_vpc_prv_enabled" {
+      default     = "0"
+      description = "Create a Private VPC? IF {YES} then SET this Value to 1"
+      }
+
+    variable "aws_vpc_prv_cidr_block" {
+      default     = "10.0.0.0/20"
+      description = "Internal IP Range of the Private VPC (Example: 10.0.0.0/20)"
+      }
+
+    variable "aws_vpc_prv_enable_dns_support" {
+      default     = "true"
+      description = "A boolean flag to enable/disable DNS support in the VPC | true OR false"
+      }
+
+    variable "aws_vpc_prv_enable_dns_hostnames" {
+      default     = "true"
+      description = "A boolean flag to enable/disable DNS Hostnames support in the VPC | true OR false"
+      }
+
+    variable "aws_vpc_prv_enable_classiclink" {
+      default     = "false"
+      description = "A boolean flag to enable/disable ClassicLink support in the VPC | true OR false"
+      }
+
+
+##  VPC - Subnets  ##
+
+  ##  Public VPC Subnets  ##
+  variable "aws_vpc_subnet_pub01_cidr_block" {
+    default     = "192.168.1.0/24"
+    description = "Internal IP Range of the Public VPC Subnet 01 (Example: 192.168.1.0/24)"
     }
 
-  variable "aws_vpc_pub_cidr_block" {
-    description = "Internal IP Range of the Public VPC (Example: 192.168.1.0/24)"
+  variable "aws_vpc_subnet_pub02_cidr_block" {
+    default     = "192.168.2.0/24"
+    description = "Internal IP Range of the Public VPC Subnet 02 (Example: 192.168.2.0/24)"
     }
 
-  variable "aws_vpc_pub_enable_dns_support" {
-    default     = "true"
-    description = "A boolean flag to enable/disable DNS support in the VPC| true OR false"
+  variable "aws_vpc_subnet_pub03_cidr_block" {
+    default     = "192.168.3.0/24"
+    description = "Internal IP Range of the Public VPC Subnet 03 (Example: 192.168.3.0/24)"
     }
 
-  variable "aws_vpc_pub_enable_dns_hostnames" {
-    default     = "true"
-    description = "A boolean flag to enable/disable DNS Hostnames support in the VPC| true OR false"
+  ##  Private VPC Subnets  ##
+  variable "aws_vpc_subnet_prv01_cidr_block" {
+    default     = "10.0.1.0/22"
+    description = "Internal IP Range of the Private VPC Subnet 01 (Example: 10.0.1.0/22)"
     }
 
-  variable "aws_vpc_pub_enable_classiclink" {
-    default     = "false"
-    description = "A boolean flag to enable/disable ClassicLink support in the VPC| true OR false"
+  variable "aws_vpc_subnet_prv02_cidr_block" {
+    default     = "10.0.4.0/22"
+    description = "Internal IP Range of the Private VPC Subnet 02 (Example: 10.0.4.0/22)"
     }
+
+  variable "aws_vpc_subnet_prv03_cidr_block" {
+    default     = "10.0.7.0/22"
+    description = "Internal IP Range of the Private VPC Subnet 03 (Example: 10.0.7.0/22)"
+    }
+
 
 ##  Route 53  ##
 
