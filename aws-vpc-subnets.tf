@@ -1,5 +1,5 @@
 resource "aws_subnet" "public" {
-  count             = "${length(data.aws_availability_zones.aws_account_az.names[*])}"
+  count             = "${length(data.aws_availability_zones.aws_account_az.names)}"
   vpc_id            = "${aws_vpc.public.id}"
   cidr_block        = "${var.aws_vpc_subnet_pub_cidr_block[count.index]}"
   availability_zone = "${data.aws_availability_zones.aws_account_az.names[count.index]}"
@@ -19,7 +19,7 @@ resource "aws_subnet" "public" {
 }
 
 resource "aws_subnet" "private" {
-  count             = "${length(data.aws_availability_zones.aws_account_az.names[*])}"
+  count             = "${length(data.aws_availability_zones.aws_account_az.names)}"
   vpc_id            = "${aws_vpc.private.id}"
   cidr_block        = "${var.aws_vpc_subnet_prv_cidr_block[count.index]}"
   availability_zone = "${data.aws_availability_zones.aws_account_az.names[count.index]}"
