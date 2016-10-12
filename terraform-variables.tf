@@ -20,6 +20,31 @@
     description = "On which Environment will the Web Application be launched | [Valid Values: prod | beta | stg]"
   }
 
+##  VPC ##
+
+  variable "aws_vpc_pub_enabled" {
+    description = "Create a Public VPC? IF {YES} then SET this Value to 1"
+    }
+
+  variable "aws_vpc_pub_cidr_block" {
+    description = "Internal IP Range of the Public VPC (Example: 192.168.1.0/24)"
+    }
+
+  variable "aws_vpc_pub_enable_dns_support" {
+    default     = "true"
+    description = "A boolean flag to enable/disable DNS support in the VPC| true OR false"
+    }
+
+  variable "aws_vpc_pub_enable_dns_hostnames" {
+    default     = "true"
+    description = "A boolean flag to enable/disable DNS Hostnames support in the VPC| true OR false"
+    }
+
+  variable "aws_vpc_pub_enable_classiclink" {
+    default     = "false"
+    description = "A boolean flag to enable/disable ClassicLink support in the VPC| true OR false"
+    }
+
 ##  Route 53  ##
 
   # Create a Public Domain (Zone)?
