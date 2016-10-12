@@ -1,4 +1,8 @@
-data "aws_availability_zones" "aws_account_available_zones" {}
+data "aws_availability_zones" "aws_account_az" {}
+
+output "aws_account_az" {
+	value = ["${aws_availability_zones.aws_account_az.*.names}"]
+}
 
 /*
 AWS_AVAILABILITY_ZONES
