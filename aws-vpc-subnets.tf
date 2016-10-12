@@ -1,3 +1,43 @@
+resource "aws_subnet" "public" {
+  count             = "${length(data.aws_availability_zones.aws_account_az.names[*])}"
+  vpc_id            = "${aws_vpc.public.id}"
+  cidr_block        = "${var.aws_vpc_subnet_pub_cidr_block[count.index]}"
+  availability_zone = "${data.aws_availability_zones.aws_account_az.names[count.index]}"
+  
+  map_public_ip_on_launch = "true"
+  
+  tags {
+    Name          = "VPC-SUB-Pub01-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
+    AZ            = "${data.aws_availability_zones.aws_account_az.names[count.index]}"
+    Type          = "Public"
+    Resource      = "Subnets"
+    ResourceGroup = "VPC"
+    Ecosystem     = "${var.prj_ecosystem}"
+    Application   = "${var.prj_application}"
+    Environment   = "${var.prj_environment}"
+  }
+}
+
+resource "aws_subnet" "private" {
+  count             = "${length(data.aws_availability_zones.aws_account_az.names[*])}"
+  vpc_id            = "${aws_vpc.private.id}"
+  cidr_block        = "${var.aws_vpc_subnet_prv_cidr_block[count.index]}"
+  availability_zone = "${data.aws_availability_zones.aws_account_az.names[count.index]}"
+  
+  tags {
+    Name          = "VPC-SUB-Prv01-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
+    AZ            = "${data.aws_availability_zones.aws_account_az.names[count.index]}"
+    Type          = "Private"
+    Resource      = "Subnets"
+    ResourceGroup = "VPC"
+    Ecosystem     = "${var.prj_ecosystem}"
+    Application   = "${var.prj_application}"
+    Environment   = "${var.prj_environment}"
+  }
+}
+
+/*
+
 ###########################
 ##  Public VPC Subnets  ##
 ###########################
@@ -119,3 +159,5 @@ resource "aws_subnet" "prv03" {
     Environment   = "${var.prj_environment}"
   }
 }
+
+*/
