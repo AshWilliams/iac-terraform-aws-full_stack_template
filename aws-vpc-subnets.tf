@@ -1,6 +1,6 @@
 resource "template_file" "azs" {
   template = <<EOF
-{$azs_list}
+${azs_list}
 EOF
   
   vars {
@@ -12,9 +12,6 @@ output "template-1" {
   value = "${template_file.azs.rendered}"
 }
 
-output "template-2" {
-  value = "${length(split(",", "${template_file.azs.rendered}"))}"
-}
 /*
 resource "aws_subnet" "public" {
   #count             = "${length(data.aws_availability_zones.aws_account_az.names)}"
