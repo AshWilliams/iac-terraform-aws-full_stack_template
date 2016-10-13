@@ -9,10 +9,10 @@ resource "aws_elb" "external" {
 	cross_zone_load_balancing = "true"
 	#(Optional) Enable cross-zone load balancing. Default: true
 	
-	#subnets = ["", "", ""]
+	subnets = ["${aws_subnet.public.*.id}"]
 	#(Required for a VPC ELB) A list of subnet IDs to attach to the ELB.
 	
-	availability_zones = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
+	availability_zones = ["${data.aws_availability_zones.aws_account_az.names}"]
 	#Required for an EC2-classic ELB) The AZ's to serve traffic in.
 	#Exactly one of availability_zones or subnets must be specified: this determines if the ELB exists in a VPC or in EC2-classic.
 	
