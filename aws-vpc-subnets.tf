@@ -18,6 +18,10 @@ resource "aws_subnet" "public" {
   }
 }
 
+output "pub_vpc_subnets" {
+  value = ["${aws_subnet.public.*.id}"]
+}
+
 resource "aws_subnet" "private" {
   count             = "${var.aws_vpc_prv_subnets_count}"
   vpc_id            = "${aws_vpc.private.id}"
