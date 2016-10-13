@@ -1,10 +1,10 @@
 
 resource "aws_subnet" "public" {
-  #count             = "${length(data.aws_availability_zones.aws_account_az.names)}"
+  count             = "${length(data.aws_availability_zones.aws_account_az.names)}"
   vpc_id            = "${aws_vpc.public.id}"
-  #cidr_block        = "${var.aws_vpc_subnet_pub_cidr_block[count.index]}"
+  cidr_block        = "${var.aws_vpc_subnet_pub_cidr_block[count.index]}"
   cidr_block        = "${var.aws_vpc_subnet_pub_cidr_block[1]}"
-  #availability_zone = "${data.aws_availability_zones.aws_account_az.names[count.index]}"
+  availability_zone = "${data.aws_availability_zones.aws_account_az.names[count.index]}"
   availability_zone = "${data.aws_availability_zones.aws_account_az.names[1]}"
   
   map_public_ip_on_launch = "true"
