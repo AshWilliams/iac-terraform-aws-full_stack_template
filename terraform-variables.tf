@@ -161,6 +161,11 @@
     default = 0
   }
 
+  # AWS EFS
+  variable "aws_efs_cluster_enabled" {
+    default = 0
+  }
+
   
 ##  AWS Account Information  ##
 
