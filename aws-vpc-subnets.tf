@@ -1,11 +1,8 @@
-variable "tmp-azs" {
-  default = ["${length(data.aws_availability_zones.aws_account_az.names)}"]
-  }
-
+let "azs_count = "${length(data.aws_availability_zones.aws_account_az.names)}"
 
 resource "aws_subnet" "public" {
   #count             = "${length(data.aws_availability_zones.aws_account_az.names)}"
-  count             = "${length(var.tmp-azs)}"
+  count             = "${length(let.azs_count)}"
   vpc_id            = "${aws_vpc.public.id}"
   cidr_block        = "${var.aws_vpc_subnet_pub_cidr_block[count.index]}"
   #cidr_block        = "${var.aws_vpc_subnet_pub_cidr_block[1]}"
