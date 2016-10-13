@@ -1,3 +1,4 @@
+/*
 resource "aws_subnet" "public" {
   count             = "${length(data.aws_availability_zones.aws_account_az.names)}"
   vpc_id            = "${aws_vpc.public.id}"
@@ -35,7 +36,7 @@ resource "aws_subnet" "private" {
     Environment   = "${var.prj_environment}"
   }
 }
-
+*/
 /*
 
 ###########################
