@@ -1,4 +1,5 @@
-resource "aws_route_table_association" "rta" {
-  subnet_id       = "${aws_subnet.public.*.id}"
+resource "aws_route_table_association" "rta_public" {
+  count           = "${var.aws_vpc_pub_enabled * var.aws_vpc_pub_subnets_count}"
+  subnet_id       = ["${aws_subnet.public.*.id}"]
   route_table_id  = "${aws_route_table.public.id}"
 }
