@@ -12,8 +12,8 @@ resource "aws_security_group_rule" "ec2-elb-egress-port-80" {
 	type				= "egress"
 	protocol			= "tcp"
 	cidr_blocks			= ["0.0.0.0/0"]
-	from_port			= "80"
-	to_port				= "80"
+	from_port			= "0"
+	to_port				= "65535"
 }
 
 resource "aws_security_group_rule" "ec2-inst-ingress-elb-port-80" {
@@ -30,8 +30,8 @@ resource "aws_security_group_rule" "ec2-inst-egress-port-80" {
 	type						= "egress"
 	protocol					= "tcp"
 	cidr_blocks			= ["0.0.0.0/0"]
-	from_port					= "80"
-	to_port						= "80"
+	from_port					= "0"
+	to_port						= "65535"
 }
 
 resource "aws_security_group_rule" "elcache-memc-ingress-port-11211" {

@@ -12,7 +12,7 @@ resource "aws_autoscaling_group" "asg" {
 	desired_capacity = "${var.asg_des_instances}"
 	#(Optional) The number of Amazon EC2 instances that should be running in the group. (See also Waiting for Capacity below.)
 	
-	availability_zones = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
+	availability_zones = ["${data.aws_availability_zones.aws_account_az.names}"]
 	#(Optional) A list of AZs to launch resources in. Required only if you do not specify any vpc_zone_identifier
 	
 	launch_configuration = "${aws_launch_configuration.node.name}"
@@ -30,7 +30,7 @@ resource "aws_autoscaling_group" "asg" {
 	load_balancers = ["${aws_elb.external.name}"]
 	#(Optional) A list of load balancer names to add to the autoscaling group names.
 	
-	#vpc_zone_identifier
+	vpc_zone_identifier = ["${aws_subnet.public.*.id}"]
 	#(Optional) A list of subnet IDs to launch resources in.
 	
 	#target_group_arns

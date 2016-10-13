@@ -3,8 +3,8 @@ resource "aws_route53_zone" "domain_pub" {
   name  = "${var.aws_r53_zone_pub_name}"
 }
 resource "aws_route53_zone" "domain_prv" {
-  count = "${var.aws_r53_zone_prv}"
-  name  = "${var.aws_r53_zone_prv_name}"
+  count   = "${var.aws_r53_zone_prv}"
+  name    = "${var.aws_r53_zone_prv_name}"
 }
 
 /*

@@ -76,50 +76,26 @@
 
 
 ##  VPC - Subnets  ##
+  variable "aws_vpc_pub_subnets_count" {
+    default = "0"
+    }
+
+  variable "aws_vpc_prv_subnets_count" {
+    default = "0"
+    }
 
   ##  Public VPC Subnets  ##
-  variable "aws_vpc_subnet_pub_cidr_block" {
-    default     = ["192.168.1.0/24", "192.168.2.0/24", "192.168.3.0/24"]
-    description = "Internal IP Range of the Public VPC Subnet 01 (Example: 192.168.1.0/24)"
-    }
-/*
-  variable "aws_vpc_subnet_pub01_cidr_block" {
-    default     = "192.168.1.0/24"
-    description = "Internal IP Range of the Public VPC Subnet 01 (Example: 192.168.1.0/24)"
-    }
-
-  variable "aws_vpc_subnet_pub02_cidr_block" {
-    default     = "192.168.2.0/24"
-    description = "Internal IP Range of the Public VPC Subnet 02 (Example: 192.168.2.0/24)"
-    }
-
-  variable "aws_vpc_subnet_pub03_cidr_block" {
-    default     = "192.168.3.0/24"
-    description = "Internal IP Range of the Public VPC Subnet 03 (Example: 192.168.3.0/24)"
-    }
-*/
+    variable "aws_vpc_subnet_pub_cidr_block" {
+      default     = ["192.168.1.0/24", "192.168.2.0/24", "192.168.3.0/24"]
+      description = "Internal IP Range of the Public VPC Subnet 01 (Example: 192.168.1.0/24)"
+      }
   
   ##  Private VPC Subnets  ##
-  variable "aws_vpc_subnet_prv_cidr_block" {
-    default     = ["10.0.1.0/22", "10.0.4.0/22", "10.0.7.0/22"]
-    description = "Internal IP Range of the Public VPC Subnet 01 (Example: 192.168.1.0/24)"
-    }
-/*
-  variable "aws_vpc_subnet_prv01_cidr_block" {
-    default     = "10.0.1.0/22"
-    description = "Internal IP Range of the Private VPC Subnet 01 (Example: 10.0.1.0/22)"
-    }
+    variable "aws_vpc_subnet_prv_cidr_block" {
+      default     = ["10.0.1.0/22", "10.0.4.0/22", "10.0.7.0/22"]
+      description = "Internal IP Range of the Public VPC Subnet 01 (Example: 192.168.1.0/24)"
+      }
 
-  variable "aws_vpc_subnet_prv02_cidr_block" {
-    default     = "10.0.4.0/22"
-    description = "Internal IP Range of the Private VPC Subnet 02 (Example: 10.0.4.0/22)"
-    }
-
-  variable "aws_vpc_subnet_prv03_cidr_block" {
-    default     = "10.0.7.0/22"
-    description = "Internal IP Range of the Private VPC Subnet 03 (Example: 10.0.7.0/22)"
-    }
-*/
 
 ##  Route 53  ##
 
@@ -182,6 +158,11 @@
 
   # AWS ElastiCache - Memcached Cluster
   variable "aws_elasticache_cluster_memcached_enabled" {
+    default = 0
+  }
+
+  # AWS EFS
+  variable "aws_efs_cluster_enabled" {
     default = 0
   }
 
