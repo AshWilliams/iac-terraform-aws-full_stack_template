@@ -1,7 +1,11 @@
+variable "tmp-azs" {
+  default = ["${length(data.aws_availability_zones.aws_account_az.names)}"]
+  }
+
 
 resource "aws_subnet" "public" {
   #count             = "${length(data.aws_availability_zones.aws_account_az.names)}"
-  count             = "3"
+  count             = "${length(var.tmp-azs)}"
   vpc_id            = "${aws_vpc.public.id}"
   cidr_block        = "${var.aws_vpc_subnet_pub_cidr_block[count.index]}"
   #cidr_block        = "${var.aws_vpc_subnet_pub_cidr_block[1]}"
