@@ -1,3 +1,4 @@
+/*
 resource "aws_network_acl_rule" "ingress_deny_all" {
   network_acl_id  = "${aws_network_acl.public.id}"
   rule_number     = "*"
@@ -6,7 +7,7 @@ resource "aws_network_acl_rule" "ingress_deny_all" {
   protocol        = "-1"    
   cidr_block      = "0.0.0.0/0"
 }
-
+*/
 resource "aws_network_acl_rule" "ingress_allow_all" {
   network_acl_id  = "${aws_network_acl.public.id}"
   rule_number     = "100"
@@ -15,7 +16,7 @@ resource "aws_network_acl_rule" "ingress_allow_all" {
   protocol        = "-1"    
   cidr_block      = "0.0.0.0/0"
 }
-
+/*
 resource "aws_network_acl_rule" "egress_deny_all" {
   network_acl_id  = "${aws_network_acl.public.id}"
   rule_number     = "*"
@@ -24,7 +25,7 @@ resource "aws_network_acl_rule" "egress_deny_all" {
   protocol        = "-1"    
   cidr_block      = "0.0.0.0/0"
 }
-
+*/
 resource "aws_network_acl_rule" "egress_allow_all" {
   network_acl_id  = "${aws_network_acl.public.id}"
   rule_number     = "100"
