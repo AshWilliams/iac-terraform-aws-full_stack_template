@@ -1,23 +1,11 @@
-resource "aws_efs_mount_target" "az-eu-west-1a" {
-	file_system_id	= "${aws_efs_file_system.volume.id}"
-	subnet_id		= "subnet-a7061cd0"
-	#ip_address		= ""
-	security_groups	= ["${aws_security_group.efs-mounts.id}"]
+resource "aws_efs_mount_target" "az-mnt" {
+  count           = "${var.aws_vpc_pub_subnets_count * var.aws_vpc_pub_enabled * var.aws_efs_cluster_enabled}"
+  file_system_id  = "${aws_efs_file_system.volume.id}"
+  subnet_id       = "${element(aws_subnet.public.*.id, count.index)}"
+  #ip_address     = ""
+  security_groups = ["${aws_security_group.efs-mounts.id}"]
 }
 
-resource "aws_efs_mount_target" "az-eu-west-1b" {
-	file_system_id	= "${aws_efs_file_system.volume.id}"
-	subnet_id		= "subnet-924371cb"
-	#ip_address		= ""
-	security_groups	= ["${aws_security_group.efs-mounts.id}"]
-}
-
-resource "aws_efs_mount_target" "az-eu-west-1c" {
-	file_system_id	= "${aws_efs_file_system.volume.id}"
-	subnet_id		= "subnet-ae0af8ca"
-	#ip_address		= ""
-	security_groups	= ["${aws_security_group.efs-mounts.id}"]
-}
 
 /*
 AWS_EFS_MOUNT_TARGET
