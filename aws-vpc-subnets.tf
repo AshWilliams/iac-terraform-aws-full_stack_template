@@ -1,28 +1,9 @@
-resource "template_file" "azs" {
-  template = <<EOF
-${azs_list}
-EOF
-  
-  vars {
-    azs_list = "${length(data.aws_availability_zones.aws_account_az.names)}"
-  }
-}
-
-output "template-1" {
-  value = "${template_file.azs.rendered}"
-}
-
-
 resource "aws_subnet" "public" {
-  #count             = "${length(data.aws_availability_zones.aws_account_az.names)}"
-  count             = "${template_file.azs.rendered}"
-  #count             = "3"
+  count             = "${var.aws_vpc_subnets_count}"
   vpc_id            = "${aws_vpc.public.id}"
   cidr_block        = "${var.aws_vpc_subnet_pub_cidr_block[count.index]}"
-  #cidr_block        = "${var.aws_vpc_subnet_pub_cidr_block[1]}"
   availability_zone = "${data.aws_availability_zones.aws_account_az.names[count.index]}"
-  #availability_zone = "${data.aws_availability_zones.aws_account_az.names[1]}"
-  
+    
   map_public_ip_on_launch = "true"
   
   tags {
@@ -34,14 +15,11 @@ resource "aws_subnet" "public" {
     Ecosystem     = "${var.prj_ecosystem}"
     Application   = "${var.prj_application}"
     Environment   = "${var.prj_environment}"
-    Count-Data      = "${length(data.aws_availability_zones.aws_account_az.names)}"
-    Count-TempFile  = "${template_file.azs.rendered}"
   }
 }
 
-/*
 resource "aws_subnet" "private" {
-  count             = "${length(data.aws_availability_zones.aws_account_az.names)}"
+  count             = "${var.aws_vpc_subnets_count}"
   vpc_id            = "${aws_vpc.private.id}"
   cidr_block        = "${var.aws_vpc_subnet_prv_cidr_block[count.index]}"
   availability_zone = "${data.aws_availability_zones.aws_account_az.names[count.index]}"
@@ -57,7 +35,7 @@ resource "aws_subnet" "private" {
     Environment   = "${var.prj_environment}"
   }
 }
-*/
+
 /*
 
 ###########################
