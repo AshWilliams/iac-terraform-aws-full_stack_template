@@ -1,3 +1,4 @@
+/*
 resource "aws_instance" "ec2_instance" {
     ami = "ami-7abd0209"
 	
@@ -15,3 +16,4 @@ resource "aws_instance" "ec2_instance" {
         Name = "GEMv2.ZIP.ms"
     }
 }
+*/
