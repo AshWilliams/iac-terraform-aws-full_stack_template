@@ -76,7 +76,11 @@
 
 
 ##  VPC - Subnets  ##
-  variable "aws_vpc_subnets_count" {
+  variable "aws_vpc_pub_subnets_count" {
+    default = "0"
+    }
+
+  variable "aws_vpc_prv_subnets_count" {
     default = "0"
     }
 
