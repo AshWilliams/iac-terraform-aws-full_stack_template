@@ -1,10 +1,30 @@
-resource "aws_s3_bucket_policy" "elb_logs" {
+resource "aws_s3_bucket_policy" "app" {
+  bucket = "${aws_s3_bucket.app.id}"
+  policy = <<POLICY
+{
+  "Id": "Policy",
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "s3:GetObject"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::${aws_s3_bucket.app.id}",
+      "Principal": {
+        "AWS": [
+          "${"aws_iam_user.prj_user.arn"}"
+        ]
+      }
+    }
+  ]
+}
+POLICY
+}
 
-	bucket = "${aws_s3_bucket.elb_logs.id}"
-	#(Required) The name of the bucket to which to apply the policy.
-	
-	#policy - (Required) The text of the policy.
-	policy = <<POLICY
+resource "aws_s3_bucket_policy" "elb_logs" {
+  bucket = "${aws_s3_bucket.elb_logs.id}"
+  policy = <<POLICY
 {
   "Id": "Policy",
   "Version": "2012-10-17",
@@ -24,5 +44,4 @@ resource "aws_s3_bucket_policy" "elb_logs" {
   ]
 }
 POLICY
-
 }
