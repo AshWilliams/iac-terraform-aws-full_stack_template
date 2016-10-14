@@ -1,5 +1,5 @@
 resource "aws_cloudformation_stack" "codedeploy-app-revision" {
-  depends_on = ["aws_autoscaling_group.asg"]
+  depends_on = ["aws_codedeploy_app.webapp", "aws_autoscaling_group.asg", "aws_autoscaling_notification.asg", "aws_iam_role.ec2-instance-profile", "aws_iam_role.codedeploy", "aws_efs_file_system.volume", "aws_efs_mount_target.az-mnt"]
   name = "codedeploy-deployment-groups-demo"
   on_failure = "DO_NOTHING"
   template_body = <<STACK
