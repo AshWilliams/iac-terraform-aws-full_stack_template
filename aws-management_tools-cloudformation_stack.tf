@@ -23,13 +23,13 @@ resource "aws_cloudformation_stack" "codedeploy-app-revision" {
             "RevisionType":"S3",
             "S3Location":{
               "Bucket":"aws.codedeploy",
-              "Key":"20160610REV-asgGEMApps.zip",
+              "Key":"app.revisions/20160610REV-asgGEMApps.zip",
               "BundleType":"Zip",
               "ETag":"927251a220966bcf3fe9b5a389f9c73f"
             }
           }
         },
-        "ServiceRoleArn":"arn:aws:iam::547013329349:role/iam-role-dtcd-demoeco-demoapp-stg"
+        "ServiceRoleArn":"${aws_iam_role.codedeploy.arn}"
       }
     }
   }
