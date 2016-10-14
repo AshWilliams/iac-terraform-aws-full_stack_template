@@ -1,5 +1,7 @@
 resource "aws_autoscaling_notification" "asg" {
 
+	depends_on = ["aws_autoscaling_group.asg"]
+	
 	group_names = ["${aws_autoscaling_group.asg.name}"]
 	#(Required) A list of AutoScaling Group Names
 	
