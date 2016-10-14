@@ -1,4 +1,4 @@
-resource "aws_autoscaling_notification" "asg_notifications" {
+resource "aws_autoscaling_notification" "asg" {
 
 	group_names = ["${aws_autoscaling_group.asg.name}"]
 	#(Required) A list of AutoScaling Group Names
