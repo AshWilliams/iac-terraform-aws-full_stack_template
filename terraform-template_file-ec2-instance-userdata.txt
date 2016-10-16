@@ -1,5 +1,7 @@
 #!/bin/bash
 
+touch /tmp/cloud-init.running
+
 yum clean all
 yum update -y
 
@@ -140,3 +142,5 @@ systemctl status awslogs.service -l
 cd /
 
 yum install -y git
+
+rm -rf /tmp/cloud-init.running
