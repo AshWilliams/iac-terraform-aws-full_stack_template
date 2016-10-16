@@ -20,7 +20,21 @@
     description = "On which Environment will the Web Application be launched | [Valid Values: prod | beta | stg]"
   }
 
-##  VPC ##
+
+##  Management Tools  ##
+
+  ## CodeDeploy ##
+  variable "clf_codedeploy_apprev_gitrepo" {
+    default     = "gfisaris/aws-codedeploy-app-revision"
+    description = "AWS CloudFormation | CodeDeploy | Application Revision | Git Repository"
+  }
+
+  variable "clf_codedeploy_apprev_commitid" {
+    description = "AWS CloudFormation | CodeDeploy | Application Revision | Commit ID"
+  }
+
+
+##  VPC  ##
 
   ##  Public VPC  ##
     variable "aws_vpc_pub_enabled" {
