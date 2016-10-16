@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "## Create cloud-init lock file.."
 touch /tmp/cloud-init.running
 
 yum clean all
@@ -143,4 +144,5 @@ cd /
 
 yum install -y git
 
+echo "## Remove cloud-init lock file.."
 rm -rf /tmp/cloud-init.running
