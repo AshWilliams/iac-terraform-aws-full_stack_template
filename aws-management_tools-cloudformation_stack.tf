@@ -22,8 +22,8 @@ resource "aws_cloudformation_stack" "codedeploy-app-revision-github" {
           "Revision":{
             "RevisionType":"GitHub",
             "GitHubLocation":{
-              "CommitId":"09b56da551aef6f08ab94c66aacd9d51d6f6be15",
-              "Repository":"gfisaris/aws-codedeploy-app-revision"
+              "CommitId":"${var.clf_codedeploy_apprev_commitid}",
+              "Repository":"${var.clf_codedeploy_apprev_gitrepo}"
             }
           }
         },
