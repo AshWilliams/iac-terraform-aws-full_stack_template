@@ -12,6 +12,14 @@
     description = "The Branch Of Project Git Repository"
   }
 
+  variable "project_gitrepo_uname" {
+    description = "The Branch Of Project Git Repository"
+  }
+
+  variable "project_gitrepo_upass" {
+    description = "The Branch Of Project Git Repository"
+  }
+
   variable "prj_ecosystem" {
     description = "Name of the Ecosystem, the Web Application is part of | [Valid Values: gemv1 / gemv2]"
   }
