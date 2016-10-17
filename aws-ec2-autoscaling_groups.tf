@@ -71,6 +71,16 @@ resource "aws_autoscaling_group" "asg" {
 		propagate_at_launch = true
 	}
 	tag {
+		key = "GitRepo_URL"
+		value = "${var.project_gitrepo_url}"
+		propagate_at_launch = true
+	}
+	tag {
+		key = "GitRepo_Branch"
+		value = "${var.project_gitrepo_branch}"
+		propagate_at_launch = true
+	}
+	tag {
 		key = "EcoSystem"
 		value = "${var.prj_ecosystem}"
 		propagate_at_launch = true
