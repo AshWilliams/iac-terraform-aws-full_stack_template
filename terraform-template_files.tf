@@ -41,9 +41,47 @@ resource "template_file" "app-phpfpm_conf" {
   }
 }
 
-resource "template_file" "app-newrelic_ini" {
+resource "template_file" "cloudw-newrelic_ini" {
   template = "${file("files-app-newrelic_ini")}"
   vars {
     project_name = "${var.project_name}"
   }
 }
+
+## Cloudwatch Logs Monitoring
+
+  resource "template_file" "cloudwatch-allInstances_app_logs_conf" {
+    template = "${file("tplfile-cloudwatch-allInstances_app_logs_conf")}"
+    vars {
+      app_eco   = "${var.prj_ecosystem}"
+      app_name  = "${var.prj_application}"
+      app_env   = "${var.prj_environment}"
+    }
+  }
+
+  resource "template_file" "cloudwatch-allInstances_gqm_qc-daemons_logs_conf" {
+    template = "${file("tplfile-cloudwatch-allInstances_gqm_qc-daemons_logs_conf")}"
+    vars {
+      app_eco   = "${var.prj_ecosystem}"
+      app_name  = "${var.prj_application}"
+      app_env   = "${var.prj_environment}"
+    }
+  }
+
+  resource "template_file" "cloudwatch-allInstances_services_logs_conf" {
+    template = "${file("tplfile-cloudwatch-allInstances_services_logs_conf")}"
+    vars {
+      app_eco   = "${var.prj_ecosystem}"
+      app_name  = "${var.prj_application}"
+      app_env   = "${var.prj_environment}"
+    }
+  }
+
+  resource "template_file" "cloudwatch-allInstances_vhost_logs_conf" {
+    template = "${file("tplfile-cloudwatch-allInstances_vhost_logs_conf")}"
+    vars {
+      app_eco   = "${var.prj_ecosystem}"
+      app_name  = "${var.prj_application}"
+      app_env   = "${var.prj_environment}"
+    }
+  }
