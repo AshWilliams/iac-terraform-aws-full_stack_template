@@ -14,3 +14,13 @@ resource "template_file" "appuser_iam_crd" {
     iamSecKey = "${aws_iam_access_key.master.secret}"
   }
 }
+
+resource "template_file" "github_repo" {
+  template = "${file("files-github_repo")}"
+  vars {
+    github_username     = "${var.project_gitrepo_uname}"
+    github_password     = "${var.project_gitrepo_upass}"
+    github_repo_url     = "${var.project_gitrepo_url}"
+    github_repo_branch  = "${var.project_gitrepo_branch}"
+  }
+}
