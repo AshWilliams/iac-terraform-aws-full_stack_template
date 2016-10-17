@@ -59,8 +59,8 @@ resource "template_file" "cloudw-newrelic_ini" {
     }
   }
 
-  resource "template_file" "cloudwatch-allInstances_gqm_qc-daemons_logs_conf" {
-    template = "${file("tplfile-cloudwatch-allInstances_gqm_qc-daemons_logs_conf")}"
+  resource "template_file" "cloudwatch-allInstances_gqm_qc_daemons_logs_conf" {
+    template = "${file("tplfile-cloudwatch-allInstances_gqm_qc_daemons_logs_conf")}"
     vars {
       app_eco   = "${var.prj_ecosystem}"
       app_name  = "${var.prj_application}"
