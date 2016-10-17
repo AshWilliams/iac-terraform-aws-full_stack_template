@@ -1,0 +1,35 @@
+[WebApp-gemv2.gqmcrxe.output.logs]
+log_group_name = WebApp-gemv2.gfm
+log_stream_name = gqmcrxe.output.logs
+datetime_format = %Y-%m-%dT%H:%M:%S%z
+time_zone = UTC
+file = /var/www/gfm.gemv2.app/live/var/logs/gemv2.gqmcrxe.output.logs
+initial_position = start_of_file
+encoding = utf_8
+
+[WebApp-gemv2.gqmcrxe.errors.logs]
+log_group_name = WebApp-gemv2.gfm
+log_stream_name = gqmcrxe.errors.logs
+datetime_format = %Y-%m-%dT%H:%M:%S%z
+time_zone = UTC
+file = /var/www/gfm.gemv2.app/live/var/logs/gemv2.gqmcrxe.errors.logs
+initial_position = start_of_file
+encoding = utf_8
+
+[WebApp-gemv2.gqmctx.output.logs]
+log_group_name = WebApp-gemv2.gfm
+log_stream_name = gqmctx.output.logs
+datetime_format = %Y-%m-%dT%H:%M:%S%z
+time_zone = UTC
+file = /var/www/gfm.gemv2.app/live/var/logs/gemv2.gqmctx.output.logs
+initial_position = start_of_file
+encoding = utf_8
+
+[WebApp-gemv2.gqmctx.errors.logs]
+log_group_name = WebApp-gemv2.gfm
+log_stream_name = gqmctx.errors.logs
+datetime_format = %Y-%m-%dT%H:%M:%S%z
+time_zone = UTC
+file = /var/www/gfm.gemv2.app/live/var/logs/gemv2.gqmctx.errors.logs
+initial_position = start_of_file
+encoding = utf_8
