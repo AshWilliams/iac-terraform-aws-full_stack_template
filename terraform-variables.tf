@@ -4,6 +4,14 @@
     description = "Name of the Project for which the Infrastructure is about | (Example: GEMv2.GLM.app || HTTP || PROD)"
   }
 
+  variable "project_gitrepo_url" {
+    description = "The URL Of Project Git Repository"
+  }
+
+  variable "project_gitrepo_branch" {
+    description = "The Branch Of Project Git Repository"
+  }
+
   variable "prj_ecosystem" {
     description = "Name of the Ecosystem, the Web Application is part of | [Valid Values: gemv1 / gemv2]"
   }
