@@ -7,7 +7,7 @@ resource "template_file" "node_userdata" {
   }
 }
 
-resource "template_file" "appuser_iam_crd" {
+resource "template_file" "app-iam_user_crd" {
   template = "${file("files-appuser_iam_crd")}"
   vars {
     iamAccKey = "${aws_iam_access_key.master.id}"
@@ -15,7 +15,7 @@ resource "template_file" "appuser_iam_crd" {
   }
 }
 
-resource "template_file" "github_repo" {
+resource "template_file" "app-github_repo" {
   template = "${file("files-github_repo")}"
   vars {
     github_username     = "${var.project_gitrepo_uname}"
