@@ -25,30 +25,32 @@ resource "template_file" "app-github_repo" {
   }
 }
 
-resource "template_file" "app-nginx_conf" {
-  template = "${file("files-app-nginx_conf")}"
-  vars {
-    app_eco = "${var.prj_ecosystem}"
-    app_name = "${var.prj_application}"
-  }
-}
+## Application vHost Configuration Files
 
-resource "template_file" "app-phpfpm_conf" {
-  template = "${file("files-app-phpfpm_conf")}"
-  vars {
-    app_eco = "${var.prj_ecosystem}"
-    app_name = "${var.prj_application}"
+  resource "template_file" "vhost-nginx_conf" {
+    template = "${file("tplfile-vhost-nginx_conf")}"
+    vars {
+      app_eco = "${var.prj_ecosystem}"
+      app_name = "${var.prj_application}"
+    }
   }
-}
 
-resource "template_file" "cloudw-newrelic_ini" {
-  template = "${file("files-app-newrelic_ini")}"
-  vars {
-    project_name = "${var.project_name}"
+  resource "template_file" "vhost-phpfpm_conf" {
+    template = "${file("tplfile-vhost-phpfpm_conf")}"
+    vars {
+      app_eco = "${var.prj_ecosystem}"
+      app_name = "${var.prj_application}"
+    }
   }
-}
 
-## Cloudwatch Logs Monitoring
+  resource "template_file" "vhost-newrelic_conf" {
+    template = "${file("tplfile-vhost-newrelic_conf")}"
+    vars {
+      project_name = "${var.project_name}"
+    }
+  }
+
+## Cloudwatch Logs Monitoring Configuration Files
 
   resource "template_file" "cloudwatch-allInstances_app_logs_conf" {
     template = "${file("tplfile-cloudwatch-allInstances_app_logs_conf")}"
