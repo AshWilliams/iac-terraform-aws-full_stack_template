@@ -24,3 +24,26 @@ resource "template_file" "app-github_repo" {
     github_repo_branch  = "${var.project_gitrepo_branch}"
   }
 }
+
+resource "template_file" "app-nginx_conf" {
+  template = "${file("files-app-nginx_conf")}"
+  vars {
+    app_eco = "${var.prj_ecosystem}"
+    app_name = "${var.prj_application}"
+  }
+}
+
+resource "template_file" "app-phpfpm_conf" {
+  template = "${file("files-app-phpfpm_conf")}"
+  vars {
+    app_eco = "${var.prj_ecosystem}"
+    app_name = "${var.prj_application}"
+  }
+}
+
+resource "template_file" "app-newrelic_ini" {
+  template = "${file("files-app-newrelic_ini")}"
+  vars {
+    project_name = "${var.project_name}"
+  }
+}
