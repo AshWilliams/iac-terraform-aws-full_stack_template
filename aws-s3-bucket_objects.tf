@@ -27,3 +27,29 @@ resource "aws_s3_bucket_object" "app-newrelic_ini" {
   key = "app-newrelic.ini"
   content = "${template_file.app-newrelic_ini.rendered}"
 }
+
+## Configuration Files for Cloudwatch Logs Monitoring
+
+  resource "aws_s3_bucket_object" "cloudwatch-allInstances_app_logs_conf" {
+    bucket  = "${aws_s3_bucket.app.id}"
+    key     = "cloudwatch-allInstances_app_logs_conf"
+    content = "${template_file.cloudwatch-allInstances_app_logs_conf.rendered}"
+  }
+
+  resource "aws_s3_bucket_object" "cloudwatch-allInstances_gqm_qc_daemons_logs_conf" {
+    bucket  = "${aws_s3_bucket.app.id}"
+    key     = "cloudwatch-allInstances_gqm_qc_daemons_logs_conf"
+    content = "${template_file.cloudwatch-allInstances_gqm_qc_daemons_logs_conf.rendered}"
+  }
+
+  resource "aws_s3_bucket_object" "cloudwatch-allInstances_services_logs_conf" {
+    bucket  = "${aws_s3_bucket.app.id}"
+    key     = "cloudwatch-allInstances_services_logs_conf"
+    content = "${template_file.cloudwatch-allInstances_services_logs_conf.rendered}"
+  }
+
+  resource "aws_s3_bucket_object" "cloudwatch-allInstances_vhost_logs_conf" {
+    bucket  = "${aws_s3_bucket.app.id}"
+    key     = "cloudwatch-allInstances_vhost_logs_conf"
+    content = "${template_file.cloudwatch-allInstances_vhost_logs_conf.rendered}"
+  }
