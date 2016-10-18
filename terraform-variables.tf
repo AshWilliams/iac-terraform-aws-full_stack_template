@@ -20,6 +20,10 @@
     description = "The Branch Of Project Git Repository"
   }
 
+  variable "project_gitrepo_ssh_keypair_public" {
+    description = "SSH Public Key that will be used to access the EC2 Instances (Example: ssh-rsa AAABBBCCC999... email@example.com)"
+  }
+
   variable "prj_ecosystem" {
     description = "Name of the Ecosystem, the Web Application is part of | [Valid Values: gemv1 / gemv2]"
   }
