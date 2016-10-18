@@ -13,7 +13,7 @@ resource "aws_s3_bucket_policy" "app" {
       "Resource": "arn:aws:s3:::${aws_s3_bucket.app.id}/*",
       "Principal": {
         "AWS": [
-          "${aws_iam_user.prj_user.arn}"
+          "${aws_iam_user.appuser.arn}"
         ]
       }
     }
