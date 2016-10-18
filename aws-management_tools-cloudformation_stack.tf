@@ -1,6 +1,6 @@
 resource "aws_cloudformation_stack" "codedeploy-app-revision-github" {
   depends_on = ["aws_codedeploy_app.webapp", "aws_autoscaling_group.asg", "aws_autoscaling_notification.asg", "aws_iam_role.ec2-instance-profile", "aws_iam_role.codedeploy", "aws_efs_file_system.volume", "aws_efs_mount_target.az-mnt"]
-  name = "codedeploy-deployment-groups-demo"
+  name = "cdgrp-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
   on_failure = "DO_NOTHING"
   template_body = <<STACK
 {
@@ -10,14 +10,14 @@ resource "aws_cloudformation_stack" "codedeploy-app-revision-github" {
     "cdgrpDemoApp":{
       "Type":"AWS::CodeDeploy::DeploymentGroup",
       "Properties":{
-        "ApplicationName":"devtools-cdapp-demoeco-demoapp-stg",
-        "DeploymentGroupName":"devtools-cdgrp-demoeco-demoapp-cloudf",
+        "ApplicationName":"${aws_codedeploy_app.webapp.name}",
+        "DeploymentGroupName":"cdgrp-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}",
         "DeploymentConfigName":"CodeDeployDefault.OneAtATime",
         "AutoScalingGroups":[
-          "EC2.ASG | demoeco | demoapp | stg | NO Advance Metrics"
+          "${aws_autoscaling_group.asg.name}"
         ],
         "Deployment":{
-          "Description":"First time",
+          "Description":"Managed by TerraForm",
           "IgnoreApplicationStopFailures":"true",
           "Revision":{
             "RevisionType":"GitHub",
