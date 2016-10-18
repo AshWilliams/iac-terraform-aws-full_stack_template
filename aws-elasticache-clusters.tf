@@ -10,12 +10,14 @@ resource "aws_elasticache_cluster" "redis" {
   num_cache_nodes = 1
   
   port                = 6379
+  subnet_group_name   = "${aws_elasticache_subnet_group.redis.name}"
   security_group_ids  = ["${aws_security_group.elcache-redis.id}"]
 }
 
 resource "aws_elasticache_cluster" "memcached" {
   count       = "${var.aws_elasticache_cluster_memcached_enabled}"
   cluster_id  = "m-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
+  
   engine                = "memcached"
   engine_version        = "1.4.24"
   parameter_group_name  = "default.memcached1.4"
