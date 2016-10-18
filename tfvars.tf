@@ -35,13 +35,6 @@
   # Branch Name of GitHub Repository
   # Example: master
   project_gitrepo_branch = "master"
-  
-  # Username of GitHub Account
-  # Example: bridgemanart
-  project_gitrepo_uname = "bridgemanart"
-  
-  # Password of GitHub Account
-  project_gitrepo_upass = "7av#dScN"
 
 
 ##  Route 53  ##
