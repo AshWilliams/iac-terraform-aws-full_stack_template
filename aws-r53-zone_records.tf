@@ -1,6 +1,6 @@
 resource "aws_route53_record" "main" {
    
-  zone_id = "${aws_route53_zone.domain.zone_id}"
+  zone_id = "${aws_route53_zone.domain_prv.zone_id}"
   #(Required) The ID of the hosted zone to contain this record.
    
   name = "zip.ms"
