@@ -1,6 +1,6 @@
 resource "aws_elasticache_cluster" "redis" {
   count       = "${var.aws_elasticache_cluster_redis_enabled}"
-  cluster_id  = "r-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
+  cluster_id  = "${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
   
   engine                = "redis"
   engine_version        = "2.8.24"
