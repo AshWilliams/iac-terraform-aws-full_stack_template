@@ -1,5 +1,5 @@
 resource "aws_launch_configuration" "node" {
-  depends_on = ["aws_key_pair.master", "template_file.node_userdata", "aws_iam_role.ec2-instance-profile"]
+  depends_on = ["aws_key_pair.master", "template_file.ec2-instance_userdata", "aws_iam_role.ec2-instance-profile"]
   
   name = "ec2-lc-${var.prj_ecosystem}-${var.prj_application}"
   
