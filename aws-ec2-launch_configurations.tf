@@ -9,7 +9,7 @@ resource "aws_launch_configuration" "node" {
   key_name              = "${aws_key_pair.master.key_name}"
   iam_instance_profile = "${aws_iam_instance_profile.node.name}"
     
-  user_data = "${template_file.node_userdata.rendered}"
+  user_data = "${template_file.ec2-instance_userdata.rendered}"
   
   enable_monitoring = false
   
