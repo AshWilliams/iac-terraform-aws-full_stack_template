@@ -4,6 +4,22 @@
     description = "Name of the Project for which the Infrastructure is about | (Example: GEMv2.GLM.app || HTTP || PROD)"
   }
 
+  variable "project_gitrepo_url" {
+    description = "The URL Of Project Git Repository"
+  }
+
+  variable "project_gitrepo_branch" {
+    description = "The Branch Of Project Git Repository"
+  }
+
+  variable "project_gitrepo_uname" {
+    description = "The Branch Of Project Git Repository"
+  }
+
+  variable "project_gitrepo_upass" {
+    description = "The Branch Of Project Git Repository"
+  }
+
   variable "prj_ecosystem" {
     description = "Name of the Ecosystem, the Web Application is part of | [Valid Values: gemv1 / gemv2]"
   }
@@ -20,7 +36,21 @@
     description = "On which Environment will the Web Application be launched | [Valid Values: prod | beta | stg]"
   }
 
-##  VPC ##
+
+##  Management Tools  ##
+
+  ## CodeDeploy ##
+  variable "clf_codedeploy_apprev_gitrepo" {
+    default     = "gfisaris/aws-codedeploy-app-revision"
+    description = "AWS CloudFormation | CodeDeploy | Application Revision | Git Repository"
+  }
+
+  variable "clf_codedeploy_apprev_commitid" {
+    description = "AWS CloudFormation | CodeDeploy | Application Revision | Commit ID"
+  }
+
+
+##  VPC  ##
 
   ##  Public VPC  ##
     variable "aws_vpc_pub_enabled" {

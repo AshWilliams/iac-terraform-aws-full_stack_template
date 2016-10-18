@@ -1,3 +1,4 @@
+/*
 resource "aws_codedeploy_deployment_group" "foo" {
   app_name = "${aws_codedeploy_app.webapp.name}"
   #(Required) The name of the application.
@@ -40,3 +41,4 @@ resource "aws_codedeploy_deployment_group" "foo" {
   #  trigger_target_arn = "foo-topic-arn"
   #}
 }
+*/

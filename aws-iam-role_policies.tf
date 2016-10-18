@@ -27,3 +27,23 @@ resource "aws_iam_role_policy" "codedeploy" {
 }
 EOF
 }
+
+resource "aws_iam_role_policy" "codedeploy-ec2-permissions" {
+  name = "iam-rolepolicy-dt_cd-ec2_perm-${var.prj_ecosystem}-${var.prj_application}-${var.prj_environment}"
+  role = "${aws_iam_role.ec2-instance-profile.id}"
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "s3:Get*",
+        "s3:List*"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
+EOF
+}
