@@ -15,7 +15,7 @@
   # Name of the Web Application
   # Example:      glm-app
   # Restrictions: Alphanumeric characters, hyphens (-), and underscores (_) are allowed.
-  prj_application = "zip_ms"
+  prj_application = "zip-ms"
   
   # Interface
   # Valid Values: http / cli
@@ -174,7 +174,7 @@
   ec2_instance-root_volume_size = "10"
   # Size (in GB) of the Root Volume for the EC2 Instances
 
-  project_db_name = "zip_ms"
+  project_db_name = "zip-ms"
   # Name of the Project's main Database that will be created on the RDS Instance
   
   project_db_admin_username = "dbadmin"
