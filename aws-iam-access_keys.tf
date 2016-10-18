@@ -1,3 +1,3 @@
-resource "aws_iam_access_key" "master" {
-  user = "${aws_iam_user.prj_user.name}"
+resource "aws_iam_access_key" "appuser" {
+  user = "${aws_iam_user.appuserr.name}"
 }
