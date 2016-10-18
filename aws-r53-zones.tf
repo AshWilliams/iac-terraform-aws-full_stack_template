@@ -5,6 +5,7 @@ resource "aws_route53_zone" "domain_pub" {
 resource "aws_route53_zone" "domain_prv" {
   count   = "${var.aws_r53_zone_prv}"
   name    = "${var.aws_r53_zone_prv_name}"
+  vpc_id  = "${aws_vpc.private.id}"
 }
 
 /*
