@@ -9,7 +9,7 @@ resource "aws_route53_record" "main" {
   type = "A"
   #(Required) The record type.
    
-  ttl = "300"
+ # ttl = "300"
   #(Required for non-alias records) The TTL of the record.
    
   #records = ["${aws_eip.external.public_ip}"]
