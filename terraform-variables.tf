@@ -20,8 +20,8 @@
     description = "The Branch Of Project Git Repository"
   }
 
-  variable "project_gitrepo_ssh_keypair_public" {
-    description = "SSH Public Key that will be used to access the EC2 Instances (Example: ssh-rsa AAABBBCCC999... email@example.com)"
+  variable "project_gitrepo_ssh_keypair_private" {
+    description = "SSH Private Key that will be used to access Project GitHub Repo (Example: ssh-rsa AAABBBCCC999... email@example.com)"
   }
 
   variable "prj_ecosystem" {
