@@ -1,5 +1,5 @@
-resource "template_file" "node_userdata" {
-  template  = "${file("terraform-template_file-ec2-instance-userdata.txt")}"
+resource "template_file" "ec2-instance_userdata" {
+  template  = "${file("tplfile-ec2-instance_userdata")}"
   vars {
     iamAccessKey  = "${var.aws_access_key}"
     iamSecretKey  = "${var.aws_secret_key}"
@@ -7,16 +7,16 @@ resource "template_file" "node_userdata" {
   }
 }
 
-resource "template_file" "app-iam_user_crd" {
-  template = "${file("files-appuser_iam_crd")}"
+resource "template_file" "iam-appuser_credentials" {
+  template = "${file("tplfile-iam-appuser_credentials")}"
   vars {
-    iamAccKey = "${aws_iam_access_key.master.id}"
-    iamSecKey = "${aws_iam_access_key.master.secret}"
+    iamAccKey = "${aws_iam_access_key.appuser.id}"
+    iamSecKey = "${aws_iam_access_key.appuser.secret}"
   }
 }
 
-resource "template_file" "app-github_repo" {
-  template = "${file("files-github_repo")}"
+resource "template_file" "github-repository_info" {
+  template = "${file("tplfile-github-repository_info")}"
   vars {
     github_username     = "${var.project_gitrepo_uname}"
     github_password     = "${var.project_gitrepo_upass}"
