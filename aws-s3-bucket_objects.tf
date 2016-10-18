@@ -1,13 +1,13 @@
-resource "aws_s3_bucket_object" "app-iam_user_crd" {
+resource "aws_s3_bucket_object" "iam-appuser_credentials" {
   bucket = "${aws_s3_bucket.app.id}"
   key = ".app-iam_user.credentials"
-  content = "${template_file.app-iam_user_crd.rendered}"
+  content = "${template_file.iam-appuser_credentials.rendered}"
 }
 
-resource "aws_s3_bucket_object" "app-github_repo" {
+resource "aws_s3_bucket_object" "github-repository_info" {
   bucket = "${aws_s3_bucket.app.id}"
   key = ".app-github.repo"
-  content = "${template_file.app-github_repo.rendered}"
+  content = "${template_file.github-repository_info.rendered}"
 }
 
 ## Configuration Files for Application vHost
