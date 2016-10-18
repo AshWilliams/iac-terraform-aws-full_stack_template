@@ -1,0 +1,44 @@
+# This file is a "template" of what your parameters.yml file should look like
+# Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
+# http://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
+parameters:
+    # database host, example: 127.0.0.1
+    database_host:     ${database_host}
+    # database port, example: null
+    database_port:     ${database_port}
+    # database name, example: symfony
+    database_name:     ${database_name}
+    # database user, example: root
+    database_user:     ${database_user}
+    # database password, example: fbsrhkwh#]
+    database_password: ${database_password}
+
+    # aws region, example: eu-west-1
+    aws_region:  ${aws_region}
+
+    # aws access key id. Access keys consist of an access key ID and secret access key,
+    # which are used to sign programmatic requests that you make to AWS.
+    # If you don't have access keys, you can create them by using the AWS Management Console.
+    # example: AAKKSSDDFFGG
+    aws_access_key_id: ${aws_access_key_id}
+
+    # example: Rebmua89MLSQyRebmua89MLSQyK9g
+    aws_secret_access_key: ${aws_secret_access_key}
+
+    # Amazon S3 is cloud storage for the Internet. To upload your data (photos, videos, documents etc.), example: jose.cuenca.dev
+    aws_bucket: ${aws_bucket}
+
+    console_path: '%kernel.root_dir%/../bin/console'
+
+    # Url to your application that can be used by Queue Manager (GQM), example: 'http://zipper.ms'
+    transmitter_url: ${transmitter_url}
+
+    # redis queue key,  will push to redis using the key defined in the bundle
+    redis_queue_key: GDM-queue
+
+    # redis dsn, A data source name (DSN) is a data structure that contains the information about a specific database
+    # that an Open Database Connectivity ( ODBC ), example: redis://192.168.18.47
+    redis_dsn: ${redis_dsn}
+
+    # Path to folder tmp, where zip app will download and zip files, [no need to change]
+    zip_service_temp_path: '%kernel.root_dir%/../var/tmp'
