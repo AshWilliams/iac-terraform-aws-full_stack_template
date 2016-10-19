@@ -2,7 +2,6 @@ GITHub Account and Repository Information
 
 Username: ${github_username}
 Password: ${github_password}
-SSHPrivateKey: ${github_ssh_prv_key}
 
 RepoURL: ${github_repo_url}
 RepoBranch: ${github_repo_branch}

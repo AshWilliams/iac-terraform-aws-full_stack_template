@@ -20,9 +20,15 @@ resource "template_file" "github-repository_info" {
   vars {
     github_username     = "${var.project_gitrepo_uname}"
     github_password     = "${var.project_gitrepo_upass}"
-    github_ssh_prv_key  = "${var.project_gitrepo_ssh_keypair_private}"
     github_repo_url     = "${var.project_gitrepo_url}"
     github_repo_branch  = "${var.project_gitrepo_branch}"
+  }
+}
+
+resource "template_file" "github-repository_sshprvkey" {
+  template = "${file("tplfile-github-repository_sshprvkey")}"
+  vars {
+    github_ssh_prv_key  = "${var.project_gitrepo_ssh_keypair_private}"
   }
 }
 

@@ -6,8 +6,14 @@ resource "aws_s3_bucket_object" "iam-appuser_credentials" {
 
 resource "aws_s3_bucket_object" "github-repository_info" {
   bucket = "${aws_s3_bucket.app.id}"
-  key = ".app-github.repo"
+  key = "github-repository_info"
   content = "${template_file.github-repository_info.rendered}"
+}
+
+resource "aws_s3_bucket_object" "github-repository_sshprvkey" {
+  bucket = "${aws_s3_bucket.app.id}"
+  key = "github-repository_sshprvkey"
+  content = "${template_file.github-repository_sshprvkey.rendered}"
 }
 
 ## Configuration Files for Application vHost
