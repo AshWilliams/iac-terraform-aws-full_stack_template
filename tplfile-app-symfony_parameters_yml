@@ -31,14 +31,14 @@ parameters:
     console_path: '%kernel.root_dir%/../bin/console'
 
     # Url to your application that can be used by Queue Manager (GQM), example: 'http://zipper.ms'
-    transmitter_url: ${transmitter_url}
+    transmitter_url: http://${transmitter_url}
 
     # redis queue key,  will push to redis using the key defined in the bundle
     redis_queue_key: GDM-queue
 
     # redis dsn, A data source name (DSN) is a data structure that contains the information about a specific database
     # that an Open Database Connectivity ( ODBC ), example: redis://192.168.18.47
-    redis_dsn: ${redis_dsn}
+    redis_dsn: redis://${redis_dsn}
 
     # Path to folder tmp, where zip app will download and zip files, [no need to change]
     zip_service_temp_path: '%kernel.root_dir%/../var/tmp'
