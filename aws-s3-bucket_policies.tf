@@ -22,6 +22,30 @@ resource "aws_s3_bucket_policy" "app" {
 POLICY
 }
 
+resource "aws_s3_bucket_policy" "app-config" {
+  bucket = "${aws_s3_bucket.app-config.id}"
+  policy = <<POLICY
+{
+  "Id": "Policy",
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "s3:GetObject"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::${aws_s3_bucket.app-config.id}/*",
+      "Principal": {
+        "AWS": [
+          "${aws_iam_user.appuser.arn}"
+        ]
+      }
+    }
+  ]
+}
+POLICY
+}
+
 resource "aws_s3_bucket_policy" "elb_logs" {
   bucket = "${aws_s3_bucket.elb_logs.id}"
   policy = <<POLICY
