@@ -32,7 +32,7 @@ resource "aws_autoscaling_group" "asg" {
 	load_balancers = ["${aws_elb.internal.name}"]
 	#(Optional) A list of load balancer names to add to the autoscaling group names.
 	
-	vpc_zone_identifier = ["${aws_subnet.public.*.id}"]
+	vpc_zone_identifier = ["${aws_subnet.private.*.id}"]
 	#(Optional) A list of subnet IDs to launch resources in.
 	
 	#target_group_arns
