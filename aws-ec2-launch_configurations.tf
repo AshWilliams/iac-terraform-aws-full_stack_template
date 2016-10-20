@@ -8,7 +8,7 @@ resource "aws_launch_configuration" "node" {
   
   key_name              = "${aws_key_pair.app.key_name}"
   iam_instance_profile  = "${aws_iam_instance_profile.node.name}"
-  security_groups       = ["${aws_security_group.ec2-inst.id}", "${aws_security_group.ec2-inst-bal_offices_access.id}", "${aws_security_group.ec2-inst-remote_access.id}"]
+  security_groups       = ["${aws_security_group.vpc-prv-ec2-inst.id}", "${aws_security_group.vpc-prv-ec2-inst-bal_offices_access.id}", "${aws_security_group.vpc-prv-ec2-inst-remote_access.id}"]
   
   user_data = "${template_file.ec2-instance_userdata.rendered}"
   
