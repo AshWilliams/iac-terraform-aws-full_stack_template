@@ -1,7 +1,8 @@
 resource "aws_cloudformation_stack" "codedeploy-app-revision-github" {
-  depends_on = ["aws_codedeploy_app.webapp", "aws_autoscaling_group.asg", "aws_autoscaling_notification.asg", "aws_iam_role.ec2-instance-profile", "aws_iam_role.codedeploy", "aws_efs_file_system.volume", "aws_efs_mount_target.az-mnt"]
-  name = "cdgrp-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
-  on_failure = "DO_NOTHING"
+  depends_on = ["aws_s3_bucket_object.app-symfony_parameters_yml", "aws_codedeploy_app.webapp", "aws_autoscaling_group.asg", "aws_iam_role.codedeploy", "aws_iam_role.ec2-instance-profile", "aws_efs_file_system.volume", "aws_efs_mount_target.az-mnt"]
+  
+  name        = "cdgrp-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
+  on_failure  = "DO_NOTHING"
   template_body = <<STACK
 {
   "AWSTemplateFormatVersion":"2010-09-09",
