@@ -22,8 +22,8 @@ resource "aws_route53_record" "main" {
   #(Optional) The health check the record should be associated with.
   
   alias {
-    name = "${aws_elb.external.dns_name}"
-    zone_id = "${aws_elb.external.zone_id}"
+    name = "${aws_elb.internal.dns_name}"
+    zone_id = "${aws_elb.internal.zone_id}"
     evaluate_target_health = true
   }
   #(Optional) An alias block. Conflicts with ttl & records. Alias record documented below.
