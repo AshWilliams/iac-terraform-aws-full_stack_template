@@ -3,7 +3,7 @@ resource "aws_efs_mount_target" "az-mnt" {
   file_system_id  = "${aws_efs_file_system.volume.id}"
   subnet_id       = "${element(aws_subnet.public.*.id, count.index)}"
   #ip_address     = ""
-  security_groups = ["${aws_security_group.efs-mounts.id}"]
+  security_groups = ["${aws_security_group.vpc-prv-efs-mounts.id}"]
 }
 
 
