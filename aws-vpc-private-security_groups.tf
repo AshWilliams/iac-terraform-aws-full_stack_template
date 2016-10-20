@@ -1,4 +1,4 @@
-resource "aws_security_group" "ec2-elb" {
+resource "aws_security_group" "vpc-prv-ec2-elb" {
   count       = "${var.aws_vpc_prv_enabled}"
   vpc_id      = "${aws_vpc.private.id}"
   
@@ -15,7 +15,7 @@ resource "aws_security_group" "ec2-elb" {
   }
 }
 
-resource "aws_security_group" "ec2-inst" {
+resource "aws_security_group" "vpc-prv-ec2-inst" {
   count       = "${var.aws_vpc_prv_enabled}"
   vpc_id      = "${aws_vpc.private.id}"
   
@@ -33,7 +33,7 @@ resource "aws_security_group" "ec2-inst" {
   }
 }
 
-resource "aws_security_group" "elcache-memcached" {
+resource "aws_security_group" "vpc-prv-elcache-memcached" {
   count       = "${var.aws_vpc_prv_enabled}"
   vpc_id      = "${aws_vpc.private.id}"
   
@@ -51,7 +51,7 @@ resource "aws_security_group" "elcache-memcached" {
   }
 }
 
-resource "aws_security_group" "elcache-redis" {
+resource "aws_security_group" "vpc-prv-elcache-redis" {
   count       = "${var.aws_vpc_prv_enabled}"
   vpc_id      = "${aws_vpc.private.id}"
   
@@ -69,7 +69,7 @@ resource "aws_security_group" "elcache-redis" {
   }
 }
 
-resource "aws_security_group" "efs-mounts" {
+resource "aws_security_group" "vpc-prv-efs-mounts" {
   count       = "${var.aws_vpc_prv_enabled}"
   vpc_id      = "${aws_vpc.private.id}"
   
@@ -87,7 +87,7 @@ resource "aws_security_group" "efs-mounts" {
   }
 }
 
-resource "aws_security_group" "rds-instances" {
+resource "aws_security_group" "vpc-prv-rds-instances" {
   count       = "${var.aws_vpc_prv_enabled}"
   vpc_id      = "${aws_vpc.private.id}"
   
@@ -105,7 +105,7 @@ resource "aws_security_group" "rds-instances" {
   }
 }
 
-resource "aws_security_group" "ec2-inst-bal_offices_access" {
+resource "aws_security_group" "vpc-prv-ec2-inst-bal_offices_access" {
   count       = "${var.aws_vpc_prv_enabled}"
   vpc_id      = "${aws_vpc.private.id}"
   
@@ -123,7 +123,7 @@ resource "aws_security_group" "ec2-inst-bal_offices_access" {
   }
 }
 
-resource "aws_security_group" "ec2-inst-remote_access" {
+resource "aws_security_group" "vpc-prv-ec2-inst-remote_access" {
   count       = "${var.aws_vpc_prv_enabled}"
   vpc_id      = "${aws_vpc.private.id}"
   
