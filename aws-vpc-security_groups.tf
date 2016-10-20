@@ -82,7 +82,7 @@ resource "aws_security_group" "rds-instances" {
 	}
 }
 
-resource "aws_security_group" "ec2-instances-officeaccess" {
+resource "aws_security_group" "ec2-inst-bal_offices_access" {
 	name		= "vpc-sg-ec2-inst-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}-office-acc"
 	description	= "VPC Security Group controlling Office Access to Project (${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}) EC2 Instances"
 	vpc_id = "${aws_vpc.public.id}"
@@ -96,7 +96,7 @@ resource "aws_security_group" "ec2-instances-officeaccess" {
 	}
 }
 
-resource "aws_security_group" "ec2-instances-remoteaccess" {
+resource "aws_security_group" "ec2-inst-remote_access" {
 	name		= "vpc-sg-ec2-inst-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}-rm-acc"
 	description	= "VPC Security Group controlling Remote Access to Project (${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}) EC2 Instances"
 	vpc_id = "${aws_vpc.public.id}"
