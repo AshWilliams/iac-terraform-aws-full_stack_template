@@ -1,6 +1,7 @@
-resource "aws_elb" "external" {
+resource "aws_elb" "internal" {
 
-	name = "ec2-elb-${var.prj_ecosystem}-${var.prj_application}-${var.prj_environment}"
+	name = "ec2-i-elb-${var.prj_ecosystem}-${var.prj_application}-${var.prj_environment}"
+	internal = "true"
 	cross_zone_load_balancing = "true"
 	subnets = ["${aws_subnet.private.*.id}"]
 	listener {
@@ -29,7 +30,7 @@ resource "aws_elb" "external" {
 	
 
   tags {
-    Name          = "ec2-elb-${var.prj_ecosystem}-${var.prj_application}-${var.prj_environment}"
+    Name          = "ec2-i-elb-${var.prj_ecosystem}-${var.prj_application}-${var.prj_environment}"
     Resource      = "ELB"
     ResourceGroup = "EC2"
     Ecosystem     = "${var.prj_ecosystem}"
