@@ -1,6 +1,16 @@
 # IaC (Infrastructure as Code)
 ## Terraform | AWS | Full-Stack Templating
 
+### Pre-Configure via CLi
+<dl>
+  <dt>> Configure Remote State</dt>
+  <dd>`terraform remote config -backend=Atlas -backend-config="name=$[atlas_username]/$[atlas_environment_name]" -backend-config="access_token=$[atlas_access_tocken]"`</dd>
+
+  <dt>> Push Configuration to Atlas</dt>
+  <dd>`terraform push -name="$[atlas_username]/$[atlas_environment_name]" -token="$[atlas_access_tocken]" -var-file=$[*.tfvars] -var 'aws_access_key=AAABBBCCC..' -var 'aws_secret_key=00112233..'`</dd>
+</dl>
+
+
 ### Terraform Data Sources:
 
 + data.aws_ami.centos_ami
