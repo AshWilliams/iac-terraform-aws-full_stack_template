@@ -1,3 +1,4 @@
+/*
 resource "aws_db_subnet_group" "public-vpc" {
   count       = "${var.aws_vpc_pub_enabled}"
   name        = "db-subnetgrp-pub-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
@@ -7,13 +8,14 @@ resource "aws_db_subnet_group" "public-vpc" {
     Name = "db-subnetgrp-pub-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
   }
 }
+*/
 
-resource "aws_db_subnet_group" "private-vpc" {
-  count       = "${var.aws_vpc_prv_enabled}"
-  name        = "db-subnetgrp-prv-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
-  subnet_ids  = ["${aws_subnet.private.*.id}"]
+resource "aws_db_subnet_group" "services" {
+  count       = "${var.aws_rds_cluster_mariadb_enabled}"
+  name        = "db-subnetgrp-srv-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
+  subnet_ids  = ["${aws_subnet.private-services.id}"]
   
   tags {
-    Name = "db-subnetgrp-prv-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
+    Name = "db-subnetgrp-srv-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
   }
 }
