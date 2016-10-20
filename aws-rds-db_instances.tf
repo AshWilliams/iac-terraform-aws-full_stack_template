@@ -10,7 +10,7 @@ resource "aws_db_instance" "mariadb" {
   storage_type      = "gp2"
   allocated_storage = "10"
   
-  port                    = "3306"
+  port                    = 3306
   multi_az                = "false"
   availability_zone       = "eu-west-1a"
   publicly_accessible     = "true"
