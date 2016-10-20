@@ -126,8 +126,14 @@
   
   ##  Private VPC Subnets  ##
     variable "aws_vpc_subnet_prv_cidr_block" {
-      default     = ["10.0.1.0/22", "10.0.4.0/22", "10.0.7.0/22"]
-      description = "Internal IP Range of the Public VPC Subnet 01 (Example: 192.168.1.0/24)"
+      default     = ["10.0.2.0/22", "10.0.4.0/22", "10.0.8.0/22"]
+      description = "IP Ranges of the Private VPC Subnets"
+      }
+
+  ##  Services Private (only) VPC Subnet  ##
+    variable "aws-vpc-prv-subnets-services-cidr_block" {
+      default     = "10.0.12.0/22"
+      description = "IP Range of the Private VPC -Services- Subnets"
       }
 
 
