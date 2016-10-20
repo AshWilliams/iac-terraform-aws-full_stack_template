@@ -1,7 +1,19 @@
-resource "aws_db_subnet_group" "default" {
-  name = "main"
-  subnet_ids = ["${aws_subnet.public.*.id}"]
+resource "aws_db_subnet_group" "public-vpc" {
+  count       = "${var.aws_vpc_pub_enabled}"
+  name        = "db-subnetgrp-pub-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
+  subnet_ids  = ["${aws_subnet.public.*.id}"]
+  
   tags {
-    Name = "My DB subnet group"
+    Name = "db-subnetgrp-pub-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
+  }
+}
+
+resource "aws_db_subnet_group" "private-vpc" {
+  count       = "${var.aws_vpc_prv_enabled}"
+  name        = "db-subnetgrp-prv-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
+  subnet_ids  = ["${aws_subnet.private.*.id}"]
+  
+  tags {
+    Name = "db-subnetgrp-prv-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
   }
 }
