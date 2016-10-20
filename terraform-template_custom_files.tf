@@ -10,8 +10,8 @@
       
       aws_s3_bucket       = "${aws_s3_bucket.app.id}"      
       aws_elasticsearch   = "${aws_elasticsearch_domain.es-cluster.endpoint}"
-      aws_elcache_redis_port    = "${aws_elasticache_cluster.bar.cache_nodes.0.port}"
-      aws_elcache_redis_address = "${aws_elasticache_cluster.bar.cache_nodes.0.address}"
+      aws_elcache_redis_port    = "${aws_elasticache_cluster.redis.cache_nodes.0.port}"
+      aws_elcache_redis_address = "${aws_elasticache_cluster.redis.cache_nodes.0.address}"
       
       dedup_api_username = "${var.app-symfony-dedup_api_username}"
       dedup_api_userpass = "${var.app-symfony-dedup_api_userpass}"
