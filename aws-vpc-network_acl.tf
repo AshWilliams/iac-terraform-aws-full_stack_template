@@ -1,3 +1,4 @@
 resource "aws_network_acl" "public" {
-  vpc_id = "${aws_vpc.public.id}"
+  count   = "${var.aws_vpc_pub_enabled}"
+  vpc_id  = "${aws_vpc.public.id}"
 }
