@@ -1,13 +1,41 @@
-# app/config/parameters.yml
 parameters:
-    database_driver:   pdo_mysql
-    database_host:     127.0.0.1
-    database_port:     ~
-    database_name:     symfony
-    database_user:     root
-    database_password: ~
 
-    mailer_transport:  smtp
-    mailer_host:       127.0.0.1
-    mailer_user:       ~
-    mailer_password:   ~
+
+    # Dynamic Parameters
+
+    # Redis Host + Port
+    # example: redis.com:6379
+    redis_host: ${aws_elcache_redis_address}:${aws_elcache_redis_port}
+
+    # ElasticSearch Protocol + Host + Port
+    # example: http://es.com:9200
+    es_host_port: ${aws_elasticsearch}
+
+    # DeDupe API endpoint basic authentication user
+    # example: admin
+    api_user: ${dedup_api_username}
+
+    # DeDupe API endpoint basic authentication user's plain password
+    # example: 1234
+    api_password: ${dedup_api_userpass}
+
+    # Bridgeman Images API base url (Protocol + Host)
+    # example: http://api.bridgemanimages.com
+    bridgemanimages_api_base_url: ${bridgemanimages_api_base_url}
+
+    # Bridgeman Images API user
+    # example: INHOUSE
+    bridgemanimages_api_user: ${bridgemanimages_api_username}
+
+    # Bridgeman Images API password
+    # example: 123456789
+    bridgemanimages_api_password: ${bridgemanimages_api_userpass}
+
+
+    # Static Parameters
+
+    # Actual Envinronment (no need to change it now).
+    actual_env: prod # prod or dev
+
+    # Symfony secret (don't need to change).
+    secret: ThisTokenIsNotSoSecretChangeIt
