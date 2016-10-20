@@ -18,9 +18,6 @@ resource "aws_subnet" "public" {
   }
 }
 
-output "pub_vpc_subnets" {
-  value = ["${aws_subnet.public.*.id}"]
-}
 
 resource "aws_subnet" "private" {
   count             = "${var.aws_vpc_prv_subnets_count}"
@@ -38,6 +35,28 @@ resource "aws_subnet" "private" {
     Application   = "${var.prj_application}"
     Environment   = "${var.prj_environment}"
   }
+}
+
+resource "aws_subnet" "private-services" {
+  vpc_id            = "${aws_vpc.private.id}"
+  cidr_block        = "${var.aws-vpc-prv-subnets-services-cidr_block}"
+  availability_zone = "${data.aws_availability_zones.aws_account_az.names[1]}"
+  
+  tags {
+    Name          = "VPC-PRV-SUB-SRVs-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
+    AZ            = "${data.aws_availability_zones.aws_account_az.names[1]}"
+    Type          = "Private"
+    Resource      = "Subnets"
+    ResourceGroup = "VPC"
+    Ecosystem     = "${var.prj_ecosystem}"
+    Application   = "${var.prj_application}"
+    Environment   = "${var.prj_environment}"
+  }
+}
+
+
+output "pub_vpc_subnets" {
+  value = ["${aws_subnet.public.*.id}"]
 }
 
 /*
