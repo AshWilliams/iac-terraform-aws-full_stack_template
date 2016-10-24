@@ -57,56 +57,31 @@
 ##  VPC  ##
 
   ##  Public VPC  ##
-    variable "aws_vpc_pub_enabled" {
+    variable "aws_vpc_app_enabled" {
       default     = "0"
-      description = "Create a Public VPC? IF {YES} then SET this Value to 1"
+      description = "Create a VPC? IF {YES} then SET this Value to 1"
       }
 
-    variable "aws_vpc_pub_cidr_block" {
+    variable "aws_vpc_app_cidr_block" {
       default     = "192.168.0.0/22"
       description = "Internal IP Range of the Public VPC (Example: 192.168.0.0/22)"
       }
 
-    variable "aws_vpc_pub_enable_dns_support" {
+    variable "aws_vpc_app_enable_dns_support" {
       default     = "true"
       description = "A boolean flag to enable/disable DNS support in the VPC | true OR false"
       }
 
-    variable "aws_vpc_pub_enable_dns_hostnames" {
+    variable "aws_vpc_app_enable_dns_hostnames" {
       default     = "true"
       description = "A boolean flag to enable/disable DNS Hostnames support in the VPC | true OR false"
       }
 
-    variable "aws_vpc_pub_enable_classiclink" {
+    variable "aws_vpc_app_enable_classiclink" {
       default     = "false"
       description = "A boolean flag to enable/disable ClassicLink support in the VPC | true OR false"
       }
 
-  ##  Private VPC  ##
-    variable "aws_vpc_prv_enabled" {
-      default     = "0"
-      description = "Create a Private VPC? IF {YES} then SET this Value to 1"
-      }
-
-    variable "aws_vpc_prv_cidr_block" {
-      default     = "10.0.0.0/20"
-      description = "Internal IP Range of the Private VPC (Example: 10.0.0.0/20)"
-      }
-
-    variable "aws_vpc_prv_enable_dns_support" {
-      default     = "true"
-      description = "A boolean flag to enable/disable DNS support in the VPC | true OR false"
-      }
-
-    variable "aws_vpc_prv_enable_dns_hostnames" {
-      default     = "true"
-      description = "A boolean flag to enable/disable DNS Hostnames support in the VPC | true OR false"
-      }
-
-    variable "aws_vpc_prv_enable_classiclink" {
-      default     = "false"
-      description = "A boolean flag to enable/disable ClassicLink support in the VPC | true OR false"
-      }
 
 
 ##  VPC - Subnets  ##
