@@ -1,5 +1,5 @@
 resource "aws_efs_mount_target" "az-mnt" {
-  count           = "${var.aws_vpc_app_enabled * var.aws_vpc_pub_subnets_count * var.aws_efs_cluster_enabled}"
+  count           = "${var.aws_vpc_app_enabled * var.aws_vpc_subnets_pub_count * var.aws_efs_cluster_enabled}"
   file_system_id  = "${aws_efs_file_system.volume.id}"
   subnet_id       = "${element(aws_subnet.public.*.id, count.index)}"
   #ip_address     = ""
