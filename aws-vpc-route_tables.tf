@@ -1,11 +1,10 @@
 resource "aws_route_table" "public" {
-  count = "${var.aws_vpc_pub_enabled}"
+  count = "${var.aws_vpc_app_enabled}"
   
-  vpc_id = "${aws_vpc.public.id}"
+  vpc_id = "${aws_vpc.app.id}"
   
   tags {
-    Name          = "VPC-Pub-RouteTbl-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
-    Type          = "Public"
+    Name          = "VPC-RouteTbl-${var.prj_environment}-${var.prj_ecosystem}-${var.prj_application}"
     Resource      = "RouteTables"
     ResourceGroup = "VPC"
     Ecosystem     = "${var.prj_ecosystem}"
