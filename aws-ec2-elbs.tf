@@ -21,7 +21,7 @@ resource "aws_elb" "internal" {
 	idle_timeout = 60
 	connection_draining = true
 	connection_draining_timeout = 90
-	security_groups = ["${aws_security_group.vpc-prv-ec2-elb.id}"]
+	security_groups = ["${aws_security_group.vpc-ec2-elb.id}"]
 	access_logs {
 		bucket = "${aws_s3_bucket.elb_logs.id}"
 		bucket_prefix = "${var.prj_environment}"

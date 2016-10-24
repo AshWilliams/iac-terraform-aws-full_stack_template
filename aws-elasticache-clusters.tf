@@ -11,7 +11,7 @@ resource "aws_elasticache_cluster" "redis" {
   
   port                = 6379
   subnet_group_name   = "${aws_elasticache_subnet_group.redis.name}"
-  security_group_ids  = ["${aws_security_group.vpc-prv-elcache-redis.id}"]
+  security_group_ids  = ["${aws_security_group.vpc-elcache-redis.id}"]
 }
 
 resource "aws_elasticache_cluster" "memcached" {
@@ -26,7 +26,7 @@ resource "aws_elasticache_cluster" "memcached" {
   num_cache_nodes = 1
   
   port                = 11211
-  security_group_ids  = ["${aws_security_group.vpc-prv-elcache-memcached.id}"]
+  security_group_ids  = ["${aws_security_group.vpc-elcache-memcached.id}"]
 }
 
 

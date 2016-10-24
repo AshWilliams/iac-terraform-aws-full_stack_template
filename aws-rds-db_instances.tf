@@ -14,8 +14,8 @@ resource "aws_db_instance" "mariadb" {
   multi_az                = "false"
   availability_zone       = "eu-west-1a"
   publicly_accessible     = "true"
-  db_subnet_group_name    = "${aws_db_subnet_group.services.id}"
-  vpc_security_group_ids  = ["${aws_security_group.vpc-prv-rds-instances.id}"]
+  db_subnet_group_name    = "${aws_db_subnet_group.rds.id}"
+  vpc_security_group_ids  = ["${aws_security_group.vpc-rds-instances.id}"]
   
   name      = "${var.project_db_name}"
   username  = "${var.project_db_admin_username}"
