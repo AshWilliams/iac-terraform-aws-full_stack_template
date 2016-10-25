@@ -5,6 +5,10 @@ resource "template_file" "ec2-instance_userdata" {
     iamSecretKey  = "${var.aws_secret_key}"
     activeRegion  = "${var.aws_region}"
   }
+  
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "template_file" "iam-appuser_credentials" {
