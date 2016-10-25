@@ -16,10 +16,6 @@ resource "aws_iam_role" "ec2-instance-profile" {
     ]
 }
 EOF
-
-  lifecycle {
-    create_before_destroy = true
-  }
 }
 
 resource "aws_iam_role" "codedeploy" {
