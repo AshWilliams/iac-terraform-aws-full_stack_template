@@ -19,4 +19,8 @@ resource "aws_launch_configuration" "node" {
     volume_size           = "10"
     delete_on_termination = true
   }
+  
+  lifecycle {
+    create_before_destroy = true
+  }
 }
